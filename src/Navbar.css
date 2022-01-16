@@ -1,0 +1,16 @@
+.Navbar {
+    height: 59.59px;
+    background-color: transparent;
+    padding: 5.6px 0px 5.6px 0px;
+    width: 100%;
+    position: relative;
+    display: flex;
+}
+
+.Navbar img {
+    filter: invert(1);
+}
+
+.NavbarContents {
+    padding: 0px 68.813px 0px 68.813px ;
+}
