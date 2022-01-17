@@ -3,7 +3,6 @@ on: push
 jobs:
   src:
     name: build src files
-    needs: server
     if: always()
     runs-on: ubuntu-latest
     timeout-minutes: 20
