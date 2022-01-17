@@ -29,9 +29,9 @@ jobs:
     - name: Map Branch to Domain ENV VAR
       run: |
         echo "DOMAIN=$(if [[ $DEPLOYMENT = PRD ]]; 
-          then echo "www.therealseat.com"; 
+          then echo "www.therealcapstone.com"; 
         else
-          echo "${DEPLOYMENT,,}.therealseat.com"; fi)" >> $GITHUB_ENV
+          echo "${DEPLOYMENT,,}.therealcapstone.com"; fi)" >> $GITHUB_ENV
 
     - name: Yarn Install
       run: |
