@@ -1,9 +1,12 @@
 .Navbar {
-    height: 59.59px;
+    height: 60px;
     background-color: transparent;
     padding: 5.6px 0px 5.6px 0px;
     width: 100%;
-    position: relative;
+    position: fixed;
+    position: -webkit-sticky;
+    top: 0;
+    z-index: 999;
     display: flex;
 }
 
@@ -12,5 +15,5 @@
 }
 
 .NavbarContents {
-    padding: 0px 68.813px 0px 68.813px ;
+    padding: 10px 70.813px 10px 70.813px ;
 }
