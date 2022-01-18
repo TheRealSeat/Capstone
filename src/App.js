@@ -1,18 +1,19 @@
 import './App.css';
 import Navbar from './Navbar';
-import Background from './Background';
+import Timeline from './Timeline';
 
 function App() {
+  const data = ['1/22/22', '1/29/22', '2/5/22', '2/12/22', '2/19/22', '2/26/22', '3/5/22', '3/12/22', '3/19/22', '3/16/22'];
+  const ieee_data = ["IEEE Std 12207","IEEE Std 730","IEEE Std 1012","IEEE Std 1233","IEEE Std 1016","IEEE Std 829"];
   return (
     <div className="App">
-      <Background />
       <header className="App-header">
         <Navbar />
         <h1 className='header-container'>
           <div className="orange-large">TheRealSeat</div><div className="large-white">&nbsp;Capstone Project</div>
         </h1>
-        <span class="project-summary-container">
-          <code class="project-summary">
+        <span className="project-summary-container">
+          <code className="project-summary">
             Summary of proposed project:
             TheRealSeat is an event ticketing platform based in Louisville, KY. Our project proposal is to build an event
             recommendation page which will show customers events that are relevant based on an algorithm. The project is not only
@@ -24,6 +25,8 @@ function App() {
           </code>
         </span>
       </header>
+      <Timeline title="Project Timeline" data={data}/>
+      <Timeline title="IEEE" data={ieee_data}/>
     </div>
   );
 }

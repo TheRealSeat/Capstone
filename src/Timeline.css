@@ -1,0 +1,54 @@
+.Timeline ul {
+    margin-top: 50px;
+    width: 150px;
+    margin-left: 100px;
+}
+
+.Timeline li {
+    position:relative;
+    color: white;
+    list-style: none;
+    cursor: pointer;
+}
+
+
+.Timeline li::after {
+    pointer-events: none;
+    content: "";
+    background-color: white;
+    height: 60px;
+    width: 7px;
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.Timeline li.finished:after {
+    background-color: green;
+}
+
+.Timeline li:last-child:after {
+    content: "";
+    height: 0px;
+}
+
+.Timeline li div {
+    pointer-events: none;
+    position: absolute;
+    left: 200px;
+    transform: translateY(-50%);
+    height: 100px;
+    width: 300px;
+    content: "HI";
+    display: block;
+    opacity: 0;
+    transition: all .3s ease-in-out;
+}
+
+.Timeline li:hover > div {
+    visibility: visible;
+    opacity: 1;
+}
