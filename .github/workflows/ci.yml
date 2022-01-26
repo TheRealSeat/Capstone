@@ -22,6 +22,16 @@ jobs:
       run: |
         echo "DEPLOYMENT=$(if [[ ${GITHUB_REF##*/} = main ]]; 
             then echo "PRD"; 
+        elif [[ ${GITHUB_REF##/} = stg ]]; 
+            then echo "STG"; 
+        elif [[ ${GITHUB_REF##/} = caty ]]; 
+            then echo "CATY"; 
+        elif [[ ${GITHUB_REF##/} = abu ]]; 
+            then echo "ABU"; 
+        elif [[ ${GITHUB_REF##/} = jose ]]; 
+            then echo "JOSE"; 
+        elif [[ ${GITHUB_REF##/} = steven ]]; 
+            then echo "STEVEN"; 
         elif [[ ${GITHUB_REF##*/} = * ]];
             then echo "DEV"; fi)" >> $GITHUB_ENV
 
