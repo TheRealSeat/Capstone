@@ -42,12 +42,6 @@ jobs:
         else
           echo "${DEPLOYMENT,,}.therealcapstone.com"; fi)" >> $GITHUB_ENV
 
-    - name: Echoing
-      run: |
-        echo "$DOMAIN"
-        echo "$DEPLOYMENT"
-        echo "$GITHUB_ENV"
-
     - name: Yarn Install
       run: |
         yarn install
