@@ -17,7 +17,7 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-1
 
-   - name: Map Branch to DEPLOYMENT
+    - name: Map Branch to DEPLOYMENT
       id: check_branch
       run: |
         echo "DEPLOYMENT=$(if [[ ${GITHUB_REF##*/} = main ]]; 
@@ -36,18 +36,15 @@ jobs:
             then echo "LAM"; 
         elif [[ ${GITHUB_REF##*/} = * ]];
             then echo "DEV"; fi)" >> $GITHUB_ENV
-
     - name: Map Branch to Domain ENV VAR
       run: |
         echo "DOMAIN=$(if [[ $DEPLOYMENT = PRD ]]; 
           then echo "www.therealcapstone.com"; 
         else
           echo "${DEPLOYMENT,,}.therealcapstone.com"; fi)" >> $GITHUB_ENV
-
     - name: Yarn Install
       run: |
         yarn install
-
     - name: Production Build
       run: yarn build
 
