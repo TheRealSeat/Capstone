@@ -17,14 +17,25 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-1
 
-    - name: Map Branch to DEPLOYMENT
+   - name: Map Branch to DEPLOYMENT
       id: check_branch
       run: |
         echo "DEPLOYMENT=$(if [[ ${GITHUB_REF##*/} = main ]]; 
             then echo "PRD"; 
+        elif [[ ${GITHUB_REF##*/} = stg ]]; 
+            then echo "STG"; 
+        elif [[ ${GITHUB_REF##*/} = caty* ]]; 
+            then echo "CATY"; 
+        elif [[ ${GITHUB_REF##*/} = abu* ]]; 
+            then echo "ABU"; 
+        elif [[ ${GITHUB_REF##*/} = jose* ]]; 
+            then echo "JOSE"; 
+        elif [[ ${GITHUB_REF##*/} = steven* ]]; 
+            then echo "STEVEN"; 
+         elif [[ ${GITHUB_REF##*/} = lam* ]]; 
+            then echo "LAM"; 
         elif [[ ${GITHUB_REF##*/} = * ]];
             then echo "DEV"; fi)" >> $GITHUB_ENV
-
 
     - name: Map Branch to Domain ENV VAR
       run: |
