@@ -16,7 +16,7 @@
   align-items: center;
   justify-content:safe;
   color: white;
-  background-image: url('./Images/hero_main.jpeg');
+  background-image: url('../Assets/Images/hero_main.jpeg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
