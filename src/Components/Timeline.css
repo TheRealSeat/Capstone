@@ -52,3 +52,21 @@
     visibility: visible;
     opacity: 1;
 }
+
+@media (max-width: 1921px) {
+  .Timeline ul {
+    margin-left: 50px;
+  }
+}
+@media (max-width: 1441px) {
+  .Timeline ul {
+    margin-left: 10px;
+    padding-left: 10px;
+  }
+}
+@media (max-width: 1025px) {
+  .Timeline ul {
+    margin-left: 0px;
+    padding-left: 0px;
+  }
+}

@@ -14,10 +14,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: top;
-  font-size: calc(10px + 2vmin);
+  justify-content:safe;
   color: white;
-  background-image: url('./Images/hero_main.jpeg');
+  background-image: url('../Assets/Images/hero_main.jpeg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -43,23 +42,24 @@ body::-webkit-scrollbar-thumb {
   border-radius: 15px;
   border: 5px solid #282c34;
 }
+body::-webkit-scrollbar-corner {
+  background-color: #282c34;
+}
 
 .orange-large {
-  font-size: 64px;
   color: #ff7b00;
   line-height: 82px;
   font-weight: bold;
 }
 
 .large-white {
-  font-size: 51px;
   line-height: 59px;
   font-weight: bold;
 }
 
 .header-container {
   display: flex;
-  justify-content: row;
+  justify-content: center;
   align-items:baseline;
 }
 
@@ -69,4 +69,38 @@ body::-webkit-scrollbar-thumb {
   padding: 20px;
   background-color: rgba(0, 0, 0, .5);
   position:relative;
+}
+
+@media (max-width: 1921px) {
+  .orange-large {
+    font-size: 70px;
+  }
+  .white-large {
+    font-size: 65px;
+  }
+  .project-summary-container {
+    font-size: 30px;
+  }
+}
+@media (max-width: 1441px) {
+  .orange-large {
+    font-size: 60px;
+  }
+  .white-large {
+    font-size: 55px;
+  }
+  .project-summary-container {
+    font-size: 25px;
+  }
+}
+@media (max-width: 1025px) {
+  .orange-large {
+    font-size: 40px;
+  }
+  .white-large {
+    font-size: 35px;
+  }
+  .project-summary-container {
+    font-size: 20px;
+  }
 }

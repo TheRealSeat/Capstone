@@ -43,11 +43,9 @@ jobs:
           then echo "www.therealcapstone.com"; 
         else
           echo "${DEPLOYMENT,,}.therealcapstone.com"; fi)" >> $GITHUB_ENV
-
     - name: Yarn Install
       run: |
         yarn install
-
     - name: Production Build
       run: yarn build
 
