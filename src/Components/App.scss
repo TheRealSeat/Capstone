@@ -22,15 +22,6 @@
   background-size: cover;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 body::-webkit-scrollbar {
   width: 20px;
 }
@@ -46,18 +37,9 @@ body::-webkit-scrollbar-corner {
   background-color: #282c34;
 }
 
-.orange-large {
-  color: #ff7b00;
-  line-height: 82px;
-  font-weight: bold;
-}
-
-.large-white {
-  line-height: 59px;
-  font-weight: bold;
-}
-
 .header-container {
+  margin-top: 80px;
+  margin-bottom: 80px;
   display: flex;
   justify-content: center;
   align-items:baseline;
@@ -69,38 +51,5 @@ body::-webkit-scrollbar-corner {
   padding: 20px;
   background-color: rgba(0, 0, 0, .5);
   position:relative;
-}
-
-@media (max-width: 1921px) {
-  .orange-large {
-    font-size: 70px;
-  }
-  .white-large {
-    font-size: 65px;
-  }
-  .project-summary-container {
-    font-size: 30px;
-  }
-}
-@media (max-width: 1441px) {
-  .orange-large {
-    font-size: 60px;
-  }
-  .white-large {
-    font-size: 55px;
-  }
-  .project-summary-container {
-    font-size: 25px;
-  }
-}
-@media (max-width: 1025px) {
-  .orange-large {
-    font-size: 40px;
-  }
-  .white-large {
-    font-size: 35px;
-  }
-  .project-summary-container {
-    font-size: 20px;
-  }
+  font-size: 1.6vw;
 }

@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import Navbar from './Navbar';
 import Timeline from './Timeline';
 
@@ -10,7 +10,7 @@ function App() {
       <header className="App-header">
         <Navbar />
         <h1 className='header-container'>
-          <div className="orange-large">TheRealSeat</div><div className="white-large">&nbsp;Capstone Project</div>
+          <div className="orange_large">TheRealSeat</div><div className="white_large">&nbsp;Capstone Project</div>
         </h1>
         <span className="project-summary-container">
           <code className="project-summary">
