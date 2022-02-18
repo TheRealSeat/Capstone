@@ -3,6 +3,7 @@ import {
   Button,
   Container,
   Form,
+  Grid,
   Icon,
   Label,
   Segment,
@@ -16,8 +17,17 @@ const HomePage = () => {
         <header className="HomePage-header">
           <Container style={{ marginTop: "30vh" }}>
             <h1 className="header-container">
-              <div className="orange-large">TheRealSeat</div>
-              <div className="white-large">&nbsp;Capstone Project</div>
+              <Grid columns="2">
+                <Grid.Row>
+                  <Grid.Column floated textAlign="right">
+                    <div className="white-large">Where your seat is placed</div>
+                  </Grid.Column>
+                  <Grid.Column textAlign="left">
+                    <div className="orange-large">TheRealSeat</div>
+                  </Grid.Column>
+                </Grid.Row>
+              </Grid>
+              <Grid columns={6}></Grid>
             </h1>
 
             <div>
@@ -45,26 +55,25 @@ const HomePage = () => {
                   Today{" "}
                 </div>
               </h1>
-              <form className="ui form">
-                <div className="field">
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder="Enter Your Name"
-                    style={{ maxWidth: "50%" }}
-                  />
-                </div>
-                <div className="field">
-                  <input
-                    type="text"
-                    name="last-name"
-                    placeholder="Last Name"
-                    style={{
-                      maxWidth: "50%",
-                    }}
-                  />
-                </div>
-              </form>
+              <Form>
+                <Grid columns="1">
+                  <Grid.Row>
+                    <Form.Field>
+                      <input placeholder="Name" />
+                    </Form.Field>
+                  </Grid.Row>
+                  <Grid.Row>
+                    <Form.Field>
+                      <input placeholder="Email" />
+                    </Form.Field>
+                  </Grid.Row>
+                  <Grid.Row>
+                    <Form.Field>
+                      <Button type="submit">Submit</Button>
+                    </Form.Field>
+                  </Grid.Row>
+                </Grid>
+              </Form>
             </Container>
           </header>
         </div>

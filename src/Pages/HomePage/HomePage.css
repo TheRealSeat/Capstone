@@ -28,7 +28,9 @@
     align-items: center;
     justify-content:safe;
     color: white;
-    background-image: url('../../Assets/Images/hero_main.jpeg');
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../../Assets/Images/hero_main.jpeg');
+
+    /* background-image: url('../../Assets/Images/hero_main.jpeg'); */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -41,7 +43,9 @@
     align-items: center;
     justify-content:safe;
     color: white;
-    background-image: url('../../Assets/Images/stadium_hero.jpeg');
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../../Assets/Images/stadium_hero.jpeg');
+
+    /* background-image: url('../../Assets/Images/stadium_hero.jpeg'); */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -90,7 +94,7 @@
   }
   
   .white-large{
-    line-height: 59px;
+    line-height: 50px;
     font-weight: bold;
   }
   .dark-large {
