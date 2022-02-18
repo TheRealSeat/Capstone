@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import Navbar from './Navbar';
 import Timeline from './Timeline';
 import {Link} from "react-router-dom";
@@ -11,7 +11,7 @@ function App() {
       <header className="App-header">
         <Navbar />
         <h1 className='header-container'>
-          <div className="orange-large">TheRealSeat</div><div className="white-large">&nbsp;Capstone Project</div>
+          <div className="orange_large">TheRealSeat</div><div className="white_large">&nbsp;Capstone Project</div>
         </h1>
         <Link to="/product">
           <button type="button" class="product-button">

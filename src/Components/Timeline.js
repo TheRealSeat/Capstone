@@ -1,4 +1,4 @@
-import './Timeline.css'
+import './Timeline.scss'
 
 function Timeline(props) {
     const listItems = props.data.map((number) =>
@@ -11,7 +11,7 @@ function Timeline(props) {
     );
     return (
         <div className="Timeline">
-            <div className='orange-large'>
+            <div className='orange_large'>
                 {props.title}
             </div>
             <ul>{listItems}</ul>

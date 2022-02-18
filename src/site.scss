@@ -1,0 +1,91 @@
+@use "sass:math";
+
+%flex-container {
+    display: flex;
+}
+
+.flex_vcenter {
+    @extend %flex-container;
+    align-items: center;
+}
+
+.flex_hcenter {
+    @extend %flex-container;
+    justify-content: center;
+}
+
+.flex_vhcenter {
+    @extend %flex-container;
+    justify-content: center;
+    align-items: center;
+}
+
+%column {
+    display:flex;
+    justify-content: center;
+}
+
+@mixin column-width($width_value: 1) {
+    width: math.div(100%, $width_value);
+}
+.col {
+    @extend %column;
+    flex-grow: 1;
+    @include column-width;
+}
+
+.col_2 {
+    @extend %column;
+    @include column-width(2);
+}
+
+.col_3 {
+    @extend %column;
+    @include column-width(3);
+}
+
+.col_4 {
+    @extend %column;
+    @include column-width(4);
+}
+
+.col_6 {
+    @extend %column;
+    @include column-width(6);
+}
+
+@media (max-width: 1921px) {
+  .orange_large {
+    font-size: 70px;
+  }
+  .white_large {
+    font-size: 55px;
+  }
+}
+@media (max-width: 1441px) {
+  .orange_large {
+    font-size: 60px;
+  }
+  .white_large {
+    font-size: 45px;
+  }
+}
+@media (max-width: 1025px) {
+  .orange_large {
+    font-size: 40px;
+  }
+  .white_large {
+    font-size: 35px;
+  }
+}
+
+.orange_large {
+  color: #ff7b00;
+  line-height: 82px;
+  font-weight: bold;
+}
+
+.large_white {
+  line-height: 59px;
+  font-weight: bold;
+}

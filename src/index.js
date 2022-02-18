@@ -1,8 +1,9 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './index.scss';
 import App from './Components/App';
+import NotFound from './Pages/NotFound';
 import Product from './Components/product'
 import Events from './Pages/Events'
 import reportWebVitals from './reportWebVitals';
@@ -14,6 +15,7 @@ ReactDOM.render(
         <Route path="/" element={<App/>}></Route>
         <Route path="/product" element={<Product/>}></Route>
         <Route path="/events" element={<Events />} />
+        <Route path="*" element={<NotFound />}/>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
