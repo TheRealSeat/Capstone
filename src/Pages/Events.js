@@ -32,10 +32,16 @@ function Events() {
   );
   const [showModal, setModalState] = useState(false);
   const [modalProps, setModalProps] = useState({header_value: "Test Header", body_value: "Test Body"});
-  const handleShowModal = () => setModalState(true);
+  const handleShowModal = () => {
+    setModalState(true);
+    handleModalPropChange({header_value: "Test Header Changed", body_value: "Test Body Changed"})
+  }
   const handleHideModal = (confirmed) => {
     console.log(confirmed)
     setModalState(false);
+  }
+  const handleModalPropChange = (value) => {
+    setModalProps(value);
   }
 
   return (
