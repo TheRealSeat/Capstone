@@ -25,6 +25,15 @@ function Events() {
       pricesFrom: 49,
     },
   ];
+  const eventCards = events.map((events) =>
+  <EventCard
+    img={events.img}
+    title={events.title}
+    location={events.location}
+    pricesFrom={events.pricesFrom}
+  ></EventCard>
+  );
+
   return (
     <div>
       <div>Hello World</div>
@@ -46,18 +55,7 @@ function Events() {
       </div>
       <ModalRoot />
       <Button onClick={addModal}>Open Modal</Button>
-      <EventCard
-        img={events[0].img}
-        title={events[0].title}
-        location={events[0].location}
-        pricesFrom={events[0].pricesFrom}
-      ></EventCard>
-      <EventCard
-        img={events[1].img}
-        title={events[1].title}
-        location={events[1].location}
-        pricesFrom={events[1].pricesFrom}
-      ></EventCard>
+      {eventCards}
     </div>
   );
 }
