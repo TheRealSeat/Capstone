@@ -1,8 +1,7 @@
 import './product.css';
 import Navbar from './Navbar';
 import Hero from './hero';
-import Timeline from './Timeline';
-import {Link} from "react-router-dom";
+
 
 function Product() {
   
