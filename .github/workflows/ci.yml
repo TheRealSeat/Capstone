@@ -32,8 +32,10 @@ jobs:
             then echo "JOSE"; 
         elif [[ ${GITHUB_REF##*/} = steven* ]]; 
             then echo "STEVEN"; 
-         elif [[ ${GITHUB_REF##*/} = lam* ]]; 
-            then echo "LAM"; 
+        elif [[ ${GITHUB_REF##*/} = lam* ]]; 
+            then echo "LAM";
+        elif [[ ${GITHUB_REF##*/} = elijah* ]]; 
+            then echo "ELIJAH";  
         elif [[ ${GITHUB_REF##*/} = * ]];
             then echo "DEV"; fi)" >> $GITHUB_ENV
 

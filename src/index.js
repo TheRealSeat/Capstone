@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './Components/App';
+import Product from './Components/product'
 import Events from './Pages/Events'
 import reportWebVitals from './reportWebVitals';
 
@@ -11,6 +12,7 @@ ReactDOM.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App/>}></Route>
+        <Route path="/product" element={<Product/>}></Route>
         <Route path="/events" element={<Events />} />
       </Routes>
     </BrowserRouter>
