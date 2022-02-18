@@ -13,7 +13,7 @@ ReactDOM.render(
       <Routes>
         <Route path="/" element={<App/>}></Route>
         <Route path="/events" element={<Events />} />
-        <Route path="*" element={<NotFound />}></Route>
+        <Route path="*" element={<NotFound />}/>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
