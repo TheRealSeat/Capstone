@@ -36,6 +36,7 @@ jobs:
             then echo "LAM"; 
         elif [[ ${GITHUB_REF##*/} = * ]];
             then echo "DEV"; fi)" >> $GITHUB_ENV
+
     - name: Map Branch to Domain ENV VAR
       run: |
         echo "DOMAIN=$(if [[ $DEPLOYMENT = PRD ]]; 
