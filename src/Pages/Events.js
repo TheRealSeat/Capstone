@@ -7,6 +7,7 @@ import ConfirmModal from "../Components/ConfirmModal/ConfirmModal";
 import EventCard from "../Components/EventCard/EventCard";
 import logo from "../Assets/Images/logo.svg";
 import fans from "../Assets/Images/fans_cheering.jpeg";
+// import Navbar from "../Components/Navbar";
 function Events() {
   const addModal = () => {
     ModalService.open(ConfirmModal);
@@ -26,23 +27,25 @@ function Events() {
     },
   ];
   const eventCards = events.map((events) =>
-  <EventCard
-    img={events.img}
-    title={events.title}
-    location={events.location}
-    pricesFrom={events.pricesFrom}
-  ></EventCard>
+    <EventCard
+      img={events.img}
+      title={events.title}
+      location={events.location}
+      pricesFrom={events.pricesFrom}
+      key={events.title}
+    ></EventCard>
   );
 
   return (
     <div>
+      {/* Uncomment navbar when page is styled, currently overlapping things */}
+      {/* <Navbar /> */}
       <div>Hello World</div>
       <div>
         <Button
           onClick={() => {
             console.log("Click");
           }}
-          type={Button}
         >
           Click Me!
         </Button>

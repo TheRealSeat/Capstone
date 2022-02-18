@@ -8,7 +8,7 @@ const EventCard = ({img, title, location, pricesFrom}) => {
         <Card.Body>
           <Card.Title>{title}</Card.Title>
           <Card.Text>
-          {<p>Location: {location}<p>Prices from ${pricesFrom}</p></p>}
+          {<span>Location: {location}<span>Prices from ${pricesFrom}</span></span>}
           </Card.Text>
         </Card.Body>
       </Card>
