@@ -5,12 +5,13 @@ import './index.css';
 import App from './Components/App';
 import Events from './Pages/Events'
 import reportWebVitals from './reportWebVitals';
+import HomePage from './Pages/HomePage';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App/>}></Route>
+        <Route path="/" element={<HomePage/>}></Route>
         <Route path="/events" element={<Events />} />
       </Routes>
     </BrowserRouter>
