@@ -22,7 +22,7 @@ function Navbar() {
 export default Navbar;
 
 /* For adding in a button that takes us directly to the shopping cart
- * Can be easily popped in under Product page 
+ * Can be easily popped in under Product page s
                 <Link to="/shopping">
                     <button type="button" class="shopping-button">
                         Shopping Cart

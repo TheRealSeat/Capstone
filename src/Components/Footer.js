@@ -1,4 +1,6 @@
 import './Footer.scss'
+import logo from '../Assets/Images/logo.svg';
+import youtube_logo from '../Assets/Images/youtube_logo.png';
 
 function Footer() {
     return (
