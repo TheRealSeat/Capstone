@@ -1,23 +1,12 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ReactDOM from 'react-dom';
-import './index.css';
-import NotFound from './Pages/NotFound';
-import Product from './Components/product'
-import Events from './Pages/Events'
+import './index.scss';
 import reportWebVitals from './reportWebVitals';
-import HomePage from './Pages/HomePage/HomePage';
+import App from './Components/App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<HomePage/>}></Route>
-        <Route path="/product" element={<Product/>}></Route>
-        <Route path="/events" element={<Events />} />
-        <Route path="*" element={<NotFound />}/>
-      </Routes>
-    </BrowserRouter>
+    <App/>
   </React.StrictMode>,
   document.getElementById('root')
 );
