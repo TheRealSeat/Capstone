@@ -1,16 +1,18 @@
 import React from "react";
 import EventCard from "../EventCard/EventCard";
 import { CardGroup } from "react-bootstrap";
-import "./EventCatalog.scss";
+import "./EventCatalog.scss"
 
-const EventCatalog = ({ events, catalogName }) => {
-  const eventCards = events.map((events) => (
+const EventCatalog = ({ events, catalogName, handleClick }) => {
+
+  const eventCards = events.map((events, index) => (
     <EventCard
       img={events.img}
       title={events.title}
       location={events.location}
       pricesFrom={events.pricesFrom}
-      key={events.title}
+      key={index}
+      handleClick={handleClick}
     ></EventCard>
   ));
 

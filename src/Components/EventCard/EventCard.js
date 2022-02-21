@@ -2,11 +2,16 @@ import "./EventCard.scss";
 import React from "react";
 import { Card } from "react-bootstrap";
 
-const EventCard = ({ img, title, location, pricesFrom }) => {
+const EventCard = ({ img, title, location, pricesFrom, handleClick }) => {
+  const cardClicked = () => {
+    handleClick({event_title: title, event_location: location, event_pricesFrom: pricesFrom})
+  }
   return (
     <div className="EventCard">
-      <Card className="Card" style={{ width: "18rem" }}>
-        <div className="ImgContainer">
+      <Card className="Card" style={{ width: "18rem" }}
+        onClick={cardClicked}
+      >
+        <div className = "ImgContainer">
           <Card.Img className="Img" variant="top" src={img} />
         </div>
         <Card.Body className="Body">
