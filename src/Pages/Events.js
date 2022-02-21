@@ -35,7 +35,7 @@ function Events() {
       />
       <div>Hello World</div>
       <Button onClick={handleShowModal}>Open Modal</Button>
-      <ProductTable catalog={catalogs}></ProductTable>
+      <ProductTable catalog={catalogs} handleClick={handleModalPropChange}></ProductTable>
       <EventCatalog events={events} catalogName="Sports" handleClick={handleModalPropChange} ></EventCatalog>
       <EventCatalog events={events} catalogName="Concerts" handleClick={handleModalPropChange} ></EventCatalog>
     </div>
