@@ -1,107 +1,74 @@
 .App {
-  text-align: center;
-  z-index: 1;
+    text-align: center;
+    z-index: 1;
 }
 
 .App-logo {
-  pointer-events: none;
-}
-
-.App-header {
-  padding-top: 60px;
-  overflow-x: hidden;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content:safe;
-  color: white;
-  background-image: url('../Assets/Images/hero_main.jpeg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+    pointer-events: none;
 }
 
 body::-webkit-scrollbar {
-  width: 20px;
+    width: 20px;
 }
+
 body::-webkit-scrollbar-track {
-  background-color: #282c34;
+    background-color: #282c34;
 }
+
 body::-webkit-scrollbar-thumb {
-  background-color: #393d45;
-  border-radius: 15px;
-  border: 5px solid #282c34;
+    background-color: #393d45;
+    border-radius: 15px;
+    border: 5px solid #282c34;
 }
+
 body::-webkit-scrollbar-corner {
-  background-color: #282c34;
-}
-
-.header-container {
-  margin-top: 80px;
-  margin-bottom: 80px;
-  display: flex;
-  justify-content: center;
-  align-items:baseline;
-}
-
-.project-summary-container {
-  margin-left: 50px;
-  margin-right: 50px;
-  padding: 20px;
-  background-color: rgba(0, 0, 0, .5);
-  position:relative;
-  font-size: 1.6vw;
-}
-
-.product-button{
-  background-color: white; 
-  color: black; 
-  border: 2px solid white;
-  font-size: 20px;
-  margin: 4px 2px;
-}
-
-.product-button:hover{
-  background-color: #ff7b00;
-  color: black;
-  border: 2px solid #ff7b00;
+    background-color: #282c34;
 }
 
 @media (max-width: 1921px) {
-  .orange-large {
-    font-size: 70px;
-  }
-  .white-large {
-    font-size: 65px;
-  }
-  .project-summary-container {
-    font-size: 30px;
-  }
-}
-@media (max-width: 1441px) {
-  .orange-large {
-    font-size: 60px;
-  }
-  .white-large {
-    font-size: 55px;
-  }
-  .project-summary-container {
-    font-size: 25px;
-  }
-}
-@media (max-width: 1025px) {
-  .orange-large {
-    font-size: 40px;
-  }
-  .white-large {
-    font-size: 35px;
-  }
-  .project-summary-container {
-    font-size: 20px;
-  }
+    .orange-large {
+        font-size: 70px;
+    }
+
+    .white-large {
+        font-size: 65px;
+    }
+
+    .project-summary-container {
+        font-size: 30px;
+    }
 }
 
-.modal-content {
-  color: black;
+@media (max-width: 1441px) {
+    .orange-large {
+        font-size: 60px;
+    }
+
+    .white-large {
+        font-size: 55px;
+    }
+
+    .project-summary-container {
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 1025px) {
+  
+    .orange-large {
+        font-size: 40px;
+    }
+
+    .white-large {
+        font-size: 35px;
+    }
+
+    .project-summary-container {
+        font-size: 20px;
+    }
+
+    .modal-content {
+      color: black;
+    }
+
 }
