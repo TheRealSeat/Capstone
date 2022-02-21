@@ -1,4 +1,4 @@
-
+@use "./site.scss";
 body {
   background-color: #282c34;
   margin: 0px;
@@ -8,6 +8,7 @@ body {
     sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: white;
 }
 
 code {

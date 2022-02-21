@@ -1,0 +1,74 @@
+.App {
+    text-align: center;
+    z-index: 1;
+}
+
+.App-logo {
+    pointer-events: none;
+}
+
+body::-webkit-scrollbar {
+    width: 20px;
+}
+
+body::-webkit-scrollbar-track {
+    background-color: #282c34;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #393d45;
+    border-radius: 15px;
+    border: 5px solid #282c34;
+}
+
+body::-webkit-scrollbar-corner {
+    background-color: #282c34;
+}
+
+@media (max-width: 1921px) {
+    .orange-large {
+        font-size: 70px;
+    }
+
+    .white-large {
+        font-size: 65px;
+    }
+
+    .project-summary-container {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 1441px) {
+    .orange-large {
+        font-size: 60px;
+    }
+
+    .white-large {
+        font-size: 55px;
+    }
+
+    .project-summary-container {
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 1025px) {
+  
+    .orange-large {
+        font-size: 40px;
+    }
+
+    .white-large {
+        font-size: 35px;
+    }
+
+    .project-summary-container {
+        font-size: 20px;
+    }
+
+    .modal-content {
+      color: black;
+    }
+
+}
