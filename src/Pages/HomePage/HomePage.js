@@ -31,7 +31,7 @@ const HomePage = () => {
               <Grid columns="2">
                 <Grid.Row>
                   <Grid.Column floated textAlign="right">
-                    <div className="white-huge">Where your seat is placed</div>
+                    <div className="white-large">Where your seat is placed</div>
                   </Grid.Column>
                   <Grid.Column textAlign="left">
                     <div className="orange-large">TheRealSeat</div>
@@ -163,30 +163,33 @@ const HomePage = () => {
             <Container style={{ marginTop: "30vh" }}>
               <h1 className="header-container">
                 <div className="dark-large" style={{ marginRight: "20px" }}>
-                  Join{" "}
+                  Join
                 </div>
 
                 <div className="orange-large"> TheRealSeat </div>
 
                 <div className="dark-large" style={{ marginLeft: "20px" }}>
-                  Today{" "}
+                  Today
                 </div>
               </h1>
+              <p style={{fontSize:'20px',fontWeight:'inherit'}}>
+              Sign up to receive our latest updates and developments. Plus get information about early access and upcoming events.
+              </p>
               <Form>
                 <Grid columns="1">
                   <Grid.Row>
-                    <Form.Field>
-                      <input placeholder="Name" />
+                    <Form.Field >
+                      <input placeholder="Enter Name" style={{backgroundColor:'GrayText',maxWidth:'60%'}}/>
                     </Form.Field>
                   </Grid.Row>
                   <Grid.Row>
                     <Form.Field>
-                      <input placeholder="Email" />
+                      <input placeholder="Enter Email" style={{backgroundColor:'GrayText',maxWidth:'60%'}} />
                     </Form.Field>
                   </Grid.Row>
                   <Grid.Row>
                     <Form.Field>
-                      <Button type="submit">Submit</Button>
+                      <Button type="submit" color="grey"  size="massive" circular >Join Today</Button>
                     </Form.Field>
                   </Grid.Row>
                 </Grid>
