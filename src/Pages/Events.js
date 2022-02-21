@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import Button from "../Components/UI/Button/Button";
 import ConfirmModal from "../Components/ConfirmModal/ConfirmModal";
 import ProductTable from "../Components/ProductTable/ProductTable";
+import EventCatalog from "../Components/EventCatalog/EventCatalog";
+import { events } from "../Data/catalogsData";
 import { catalogs } from "../Data/catalogsData";
-
 // import Navbar from "../Components/Navbar";
 function Events() {
 
@@ -35,8 +36,8 @@ function Events() {
       <div>Hello World</div>
       <Button onClick={handleShowModal}>Open Modal</Button>
       <ProductTable catalog={catalogs}></ProductTable>
-      <EventCatalog events={events} eventCategory="Sports" handleClick={handleModalPropChange} ></EventCatalog>
-      <EventCatalog events={events} eventCategory="Concerts" handleClick={handleModalPropChange} ></EventCatalog>
+      <EventCatalog events={events} catalogName="Sports" handleClick={handleModalPropChange} ></EventCatalog>
+      <EventCatalog events={events} catalogName="Concerts" handleClick={handleModalPropChange} ></EventCatalog>
     </div>
   );
 }
