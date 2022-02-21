@@ -10,7 +10,7 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<HomePage/>}/>
+        <Route path="/" element={<HomePage/>}></Route>
         <Route path="/events" element={<Events />} />
       </Routes>
     </BrowserRouter>
