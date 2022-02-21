@@ -34,16 +34,16 @@ function Events() {
   ];
 
   const [showModal, setModalState] = useState(false);
-  const [modalProps, setModalProps] = useState({header_value: "Test Header", body_value: "Test Body"});
+  const [modalProps, setModalProps] = useState({ header_value: "Test Header", body_value: "Test Body" });
   const handleShowModal = () => {
     setModalState(true);
-    handleModalPropChange({header_value: "Test Header Changed", body_value: "Test Body Changed"})
   }
   const handleHideModal = (confirmed) => {
-    console.log(confirmed)
+    console.log(confirmed);
     setModalState(false);
   }
   const handleModalPropChange = (value) => {
+    setModalState(true);
     setModalProps(value);
   }
 
@@ -54,8 +54,8 @@ function Events() {
       <ConfirmModal show={showModal} handleClose={handleHideModal} props={modalProps} />
       <div>Hello World</div>
       <Button onClick={handleShowModal}>Open Modal</Button>
-      <EventCatalog events = {events} eventCategory = "Sports" ></EventCatalog>
-      <EventCatalog events = {events} eventCategory = "Concerts" ></EventCatalog>      
+      <EventCatalog events={events} eventCategory="Sports" handleClick={handleModalPropChange} ></EventCatalog>
+      <EventCatalog events={events} eventCategory="Concerts" handleClick={handleModalPropChange} ></EventCatalog>
     </div>
   );
 }
