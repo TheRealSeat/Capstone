@@ -52,24 +52,28 @@ const HomePage = () => {
                 <div className="orange-large"> TheRealSeat </div>
 
                 <div className="dark-large" style={{ marginLeft: "20px" }}>
-                  Today{" "}
+                  Today
                 </div>
               </h1>
+              <div>
+                <p style={{fontSize:'20px',marginBottom:'15px'}}>
+                Sign up to receive our latest updates and developments. Plus get information about early access and upcoming events.                </p>
+              </div>
               <Form>
                 <Grid columns="1">
                   <Grid.Row>
                     <Form.Field>
-                      <input placeholder="Name" />
+                      <input placeholder="Your Name" style={{height:'50px',backgroundColor:'GrayText',width:'60%'}} />
+                    </Form.Field>
+                  </Grid.Row>
+                  <Grid.Row style={{marginTop:'10px'}}>
+                    <Form.Field>
+                      <input placeholder="Your Email"  style={{height:'50px',backgroundColor:'GrayText',width:'60%'}} />
                     </Form.Field>
                   </Grid.Row>
                   <Grid.Row>
                     <Form.Field>
-                      <input placeholder="Email" />
-                    </Form.Field>
-                  </Grid.Row>
-                  <Grid.Row>
-                    <Form.Field>
-                      <Button type="submit">Submit</Button>
+                      <Button type="submit" color="grey" size="massive">Join Now</Button>
                     </Form.Field>
                   </Grid.Row>
                 </Grid>
