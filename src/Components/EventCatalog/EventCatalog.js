@@ -1,10 +1,9 @@
 import React from "react";
 import EventCard from "../EventCard/EventCard";
 import { CardGroup } from "react-bootstrap";
-import "./EventCatalog.scss"
+import "./EventCatalog.scss";
 
-const EventCatalog = ({events, eventCategory}) => {
-
+const EventCatalog = ({ events, catalogName }) => {
   const eventCards = events.map((events) => (
     <EventCard
       img={events.img}
@@ -16,8 +15,8 @@ const EventCatalog = ({events, eventCategory}) => {
   ));
 
   return (
-    <div className = "eventcatalog">
-    <h1 className = "title">{eventCategory}</h1>
+    <div className="eventcatalog">
+      <h1 className="title">{catalogName}</h1>
       <CardGroup>{eventCards}</CardGroup>
     </div>
   );

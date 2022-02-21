@@ -6,7 +6,7 @@ const EventCard = ({ img, title, location, pricesFrom }) => {
   return (
     <div className="EventCard">
       <Card className="Card" style={{ width: "18rem" }}>
-        <div className = "ImgContainer">
+        <div className="ImgContainer">
           <Card.Img className="Img" variant="top" src={img} />
         </div>
         <Card.Body className="Body">
