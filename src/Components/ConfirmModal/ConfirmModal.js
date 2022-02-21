@@ -1,26 +1,25 @@
-import React from "react";
-import Modal from "../UI/Modal/Modal";
-import ModalHeader from "../UI/Modal/ModalHeader";
-import ModalBody from "../UI/Modal/ModalBody";
-import ModalFooter from "../UI/Modal/ModalFooter";
 import Button from "../UI/Button/Button";
-const ConfirmModal = ({ close }) => {
+import Modal from "react-bootstrap/Modal";
+const ConfirmModal = ({show, handleClose, props}) => {
   return (
-    <div>
-      <Modal>
-        <ModalHeader>
-          <h3>Confirmation Modal!</h3>
-        </ModalHeader>
-        <ModalBody>
-          <p>Please Confirm</p>
-        </ModalBody>
-        <ModalFooter>
-          <Button onClick={close}>
+    <>
+      <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
+        <Modal.Header closeButton>
+          <h3>{props.header_value}</h3>
+        </Modal.Header>
+        <Modal.Body>
+          <p>{props.body_value}</p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={() => handleClose(false)}>
+            Cancel
+          </Button>
+          <Button onClick={() => handleClose(true)}>
             Confirm
           </Button>
-        </ModalFooter>
+        </Modal.Footer>
       </Modal>
-    </div>
+    </>
   );
 };
 
