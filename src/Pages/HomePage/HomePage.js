@@ -19,7 +19,7 @@ import logo from './logo.svg'
 import Crowd_3 from './Crowd_3.jpg'
 
 
-import "./HomePage.css";
+import "./HomePage.scss";
 const HomePage = () => {
   return (
     <Segment inverted textAlign="center" vertical className="masthead">
@@ -136,9 +136,10 @@ const HomePage = () => {
           as='h4'
           className='header'
           horizontal
-          style={{ margin: '3em 0em', textTransform: 'uppercase' }}
+          style={{ margin: '3em 0em', textTransform: 'uppercase',color:'grey' }}
         >
-          <a href='#'style={{color: 'white'}}>Services</a>
+          Services
+          {/* <a href=''style={{color: 'white'}}>Services</a> */}
         </Divider>
 
         <Header as='h3' style={{ fontSize: '2em', color: '#fe9200' }}>
