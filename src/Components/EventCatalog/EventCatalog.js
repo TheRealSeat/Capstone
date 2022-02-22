@@ -3,7 +3,7 @@ import EventCard from "../EventCard/EventCard";
 import { CardGroup } from "react-bootstrap";
 import "./EventCatalog.scss"
 
-const EventCatalog = ({ events, eventCategory, handleClick }) => {
+const EventCatalog = ({ events, catalogName, handleClick }) => {
 
   const eventCards = events.map((events, index) => (
     <EventCard
@@ -18,7 +18,7 @@ const EventCatalog = ({ events, eventCategory, handleClick }) => {
 
   return (
     <div className="eventcatalog">
-      <h1 className="title">{eventCategory}</h1>
+      <h1 className="title">{catalogName}</h1>
       <CardGroup>{eventCards}</CardGroup>
     </div>
   );

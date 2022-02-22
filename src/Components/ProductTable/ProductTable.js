@@ -1,9 +1,17 @@
-import React from 'react'
+import React from "react";
+import EventCatalog from "../EventCatalog/EventCatalog";
 
-const ProductTable = ({eventLists}) => {
-  return (
-    <div>ProductTable</div>
-  )
-}
+const ProductTable = ({ catalog, handleClick}) => {
+  const eventCatalogs = catalog.map((item, index) => (
+    <EventCatalog
+      events={item.events}
+      catalogName={item.catalogName}
+      key={index}
+      handleClick={handleClick}
+    ></EventCatalog>
+  ));
 
-export default ProductTable
+  return <div>{eventCatalogs}</div>;
+};
+
+export default ProductTable;
