@@ -12,15 +12,18 @@ Divider,
 Menu,
 Dropdown
 } from "semantic-ui-react";
-import Crowd_1 from './Crowd_1.jpg'
-import logo from './logo.svg'
-import Crowd_3 from './Crowd_3.jpg'
+import Crowd_1 from './Crowd_1.jpg';
+import logo from './logo.svg';
+import Crowd_3 from './Crowd_3.jpg';
+import Navbar from "../Components/Navbar";
+import Footer from "../Components/Footer";
 
 
 import "./HomePage.scss";
 const HomePage = () => {
     return (
         <Segment inverted textAlign="center" vertical className="masthead">
+            <Navbar />
             <div>
                 <header className="HomePage-header">
                     <Container style={{ marginTop: "30vh" }}>
@@ -196,6 +199,7 @@ const HomePage = () => {
                     </header>
                 </div>
             </div>
+            <Footer />
         </Segment>
     );
 };
