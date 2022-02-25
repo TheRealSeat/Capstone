@@ -1,0 +1,35 @@
+.EventCard {
+  padding: 1.5rem;
+
+  .Card {
+    border-radius: 8px;
+    transition: 0.8s;
+    overflow: hidden;
+    .ImgContainer {
+        overflow: hidden;
+      .Img {
+        border-radius: 8px;
+        height: 12rem;
+        transition: 0.5s;
+      }
+    }
+    .Body {
+      z-index: 1;
+      .Title {
+        color: black;
+        font-weight: 500;
+      }
+      .Description {
+        color: dimgrey;
+      }
+    }
+  }
+
+  .Card:hover > .ImgContainer > Img{
+    transform: scale(1.05);
+  }
+  .Card:hover{
+    transform: scale(1.05);
+    box-shadow: 0 0 11px rgba(214, 214, 214, 0.33); 
+}
+}
