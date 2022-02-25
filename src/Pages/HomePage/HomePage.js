@@ -15,8 +15,8 @@ Dropdown
 import Crowd_1 from './Crowd_1.jpg';
 import logo from './logo.svg';
 import Crowd_3 from './Crowd_3.jpg';
-import Navbar from "../Components/Navbar";
-import Footer from "../Components/Footer";
+import Navbar from "../../Components/Navbar";
+import Footer from "../../Components/Footer";
 
 
 import "./HomePage.scss";
