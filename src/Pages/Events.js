@@ -8,14 +8,25 @@ import { catalogs } from "../Data/catalogsData";
 // import Navbar from "../Components/Navbar";
 function Events() {
 
-
+  const [cart, setCart] = useState([])
 
   const [showModal, setModalState] = useState(false);
   const [modalProps, setModalProps] = useState({ header_value: "Test Header", body_value: "Test Body" });
+
+  const addToCart = (product) => {
+    setCart([...cart, { ...product }]);
+  };
+  const removeFromCart = (productToRemove) => {
+    setCart(cart.filter((product) => product !== productToRemove));
+  }; 
+
   const handleShowModal = () => {
     setModalState(true);
   }
-  const handleHideModal = (confirmed) => {
+  const handleHideModal = (confirmed, product) => {
+    if (confirmed) {
+      addToCart(product);
+    }
     console.log(confirmed);
     setModalState(false);
   };
@@ -34,10 +45,12 @@ function Events() {
         props={modalProps}
       />
       <div>Hello World</div>
+      <div>Cart({cart.length})</div>
+      <ul>{cart.map((product, index) => <li key = {index} >{product.event_title}</li>)}</ul>
+
       <Button onClick={handleShowModal}>Open Modal</Button>
+      <EventCatalog events={events} catalogName="Arts & Theater" handleClick={handleModalPropChange} ></EventCatalog>
       <ProductTable catalog={catalogs} handleClick={handleModalPropChange}></ProductTable>
-      <EventCatalog events={events} catalogName="Sports" handleClick={handleModalPropChange} ></EventCatalog>
-      <EventCatalog events={events} catalogName="Concerts" handleClick={handleModalPropChange} ></EventCatalog>
     </div>
   );
 }
