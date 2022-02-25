@@ -16,7 +16,7 @@ const ConfirmModal = ({show, handleClose, props}) => {
           <Button onClick={() => handleClose(false)}>
             Cancel
           </Button>
-          <Button onClick={() => handleClose(true)}>
+          <Button onClick={() => handleClose(true, props)}>
             Confirm
           </Button>
         </Modal.Footer>
