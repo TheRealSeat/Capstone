@@ -1,4 +1,4 @@
-import './product.css';
+import './product.scss';
 import Navbar from './Navbar';
 import Hero from './hero';
 
