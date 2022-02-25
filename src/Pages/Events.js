@@ -5,10 +5,12 @@ import ProductTable from "../Components/ProductTable/ProductTable";
 import EventCatalog from "../Components/EventCatalog/EventCatalog";
 import { events } from "../Data/catalogsData";
 import { catalogs } from "../Data/catalogsData";
+import Cart from "../Components/CartModal/CartModal";
 // import Navbar from "../Components/Navbar";
 function Events() {
 
-  const [cart, setCart] = useState([])
+  const [cart, setCart] = useState([]);
+  const [showCart, setCartState] = useState(false);
 
   const [showModal, setModalState] = useState(false);
   const [modalProps, setModalProps] = useState({ header_value: "Test Header", body_value: "Test Body" });
@@ -16,12 +18,15 @@ function Events() {
   const addToCart = (product) => {
     setCart([...cart, { ...product }]);
   };
-  // const removeFromCart = (productToRemove) => {
-  //   setCart(cart.filter((product) => product !== productToRemove));
-  // }; 
+  const removeFromCart = (productToRemove) => {
+    setCart(cart.filter((product) => product !== productToRemove));
+  }; 
 
-  const handleShowModal = () => {
-    setModalState(true);
+  const handleShowCart = () => {
+    setCartState(true);
+  }
+  const handleCloseCart = () => {
+    setCartState(false);
   }
   const handleHideModal = (confirmed, product) => {
     if (confirmed) {
@@ -39,6 +44,12 @@ function Events() {
     <div>
       {/* Uncomment navbar when page is styled, currently overlapping things */}
       {/* <Navbar /> */}
+      <Cart
+        show={showCart}
+        handleRemove={removeFromCart}
+        handleClose={handleCloseCart}
+        props={cart}
+      />
       <ConfirmModal
         show={showModal}
         handleClose={handleHideModal}
@@ -46,9 +57,8 @@ function Events() {
       />
       <div>Hello World</div>
       <div>Cart({cart.length})</div>
-      <ul>{cart.map((product, index) => <li key = {index} >{product.event_title}</li>)}</ul>
 
-      <Button onClick={handleShowModal}>Open Modal</Button>
+      <Button onClick={handleShowCart}>Open Modal</Button>
       <EventCatalog events={events} catalogName="Arts & Theater" handleClick={handleModalPropChange} ></EventCatalog>
       <ProductTable catalog={catalogs} handleClick={handleModalPropChange}></ProductTable>
     </div>
