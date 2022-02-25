@@ -1,0 +1,31 @@
+﻿.Header {
+    padding-top: 60px;
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: safe;
+    color: white;
+    background-image: url('../Assets/Images/hero_main.jpeg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.Header-container {
+    margin-top: 80px;
+    margin-bottom: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.Project-summary-container {
+    margin-left: 50px;
+    margin-right: 50px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, .5);
+    position: relative;
+    font-size: 1.6vw;
+}

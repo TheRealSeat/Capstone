@@ -1,0 +1,178 @@
+﻿.ui.main.container {
+    margin-top: 7em;
+}
+
+.masthead {
+    align-items: center;
+}
+
+.masthead h1.ui.header {
+    font-size: 4em;
+}
+
+.App {
+    text-align: center;
+    z-index: 1;
+}
+
+.App-logo {
+    pointer-events: none;
+}
+
+.HomePage-header {
+    padding-top: 60px;
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: safe;
+    color: white;
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../../Assets/Images/hero_main.jpeg');
+    /* background-image: url('../../Assets/Images/hero_main.jpeg'); */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.Form-header {
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: safe;
+    color: white;
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../../Assets/Images/stadium_hero.jpeg');
+    /* background-image: url('../../Assets/Images/stadium_hero.jpeg'); */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.inputText {
+    height: 42px !important;
+    margin-top: 20px !important;
+    margin-bottom: 50px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    border-width: 1px 1px 2px !important;
+    border-color: #222 !important;
+    border-radius: 2px !important;
+    background-color: rgba(255, 253, 253, 0.22);
+    color: #fff !important;
+    font-weight: 500 !important;
+}
+
+@keyframes App-logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+body::-webkit-scrollbar {
+    width: 20px;
+}
+
+body::-webkit-scrollbar-track {
+    background-color: #282c34;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #393d45;
+    border-radius: 15px;
+    border: 5px solid #282c34;
+}
+
+body::-webkit-scrollbar-corner {
+    background-color: #282c34;
+}
+
+.orange-large {
+    color: #ff7b00;
+    line-height: 82px;
+    font-weight: bold;
+}
+
+.white-large {
+    line-height: 50px;
+    font-weight: bold;
+}
+
+.dark-large {
+    color: #282c34;
+    line-height: 59px;
+    font-weight: bold;
+}
+
+.header-container {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.project-summary-container {
+    margin-left: 50px;
+    margin-right: 50px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, .5);
+    position: relative;
+}
+
+@media (max-width: 1921px) {
+    .orange-large {
+        font-size: 70px;
+    }
+
+    .white-large {
+        font-size: 65px;
+    }
+
+    .dark-large {
+        font-size: 65px;
+    }
+
+    .project-summary-container {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 1441px) {
+    .orange-large {
+        font-size: 60px;
+    }
+
+    .white-large {
+        font-size: 55px;
+    }
+
+    .dark-large {
+        font-size: 65px;
+    }
+
+    .project-summary-container {
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 1025px) {
+    .orange-large {
+        font-size: 40px;
+    }
+
+    .white-large {
+        font-size: 35px;
+    }
+
+    .dark-large {
+        font-size: 65px;
+    }
+
+    .project-summary-container {
+        font-size: 20px;
+    }
+}
