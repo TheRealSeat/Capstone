@@ -16,9 +16,9 @@ function Events() {
   const addToCart = (product) => {
     setCart([...cart, { ...product }]);
   };
-  const removeFromCart = (productToRemove) => {
-    setCart(cart.filter((product) => product !== productToRemove));
-  }; 
+  // const removeFromCart = (productToRemove) => {
+  //   setCart(cart.filter((product) => product !== productToRemove));
+  // }; 
 
   const handleShowModal = () => {
     setModalState(true);
