@@ -64,10 +64,11 @@ function Footer() {
                     <Button color='instagram'>
                         <Icon name='instagram' /> Instagram
                     </Button>
-                    <Button color='youtube'>
-                        <Icon name='youtube' /> YouTube
-                        <a href="https://www.youtube.com/channel/UCkocc2mzcG0fDg80vAtJgwA" />
-                    </Button>
+                    <a href="https://www.youtube.com/channel/UCkocc2mzcG0fDg80vAtJgwA">
+                        <Button color='youtube'>
+                            <Icon name='youtube' /> YouTube
+                        </Button>
+                    </a>
                 </div>
             </div>
         </div>
