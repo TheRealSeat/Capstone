@@ -1,61 +1,68 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "../Components/UI/Button/Button";
-import InputField from "../Components/UI/InputField/InputField";
-import ModalService from "../Services/ModalService";
-import ModalRoot from "../Components/UI/Modal/ModalRoot";
 import ConfirmModal from "../Components/ConfirmModal/ConfirmModal";
-import EventCard from "../Components/EventCard/EventCard";
-import logo from "../Assets/Images/logo.svg";
-import fans from "../Assets/Images/fans_cheering.jpeg";
+import ProductTable from "../Components/ProductTable/ProductTable";
+import EventCatalog from "../Components/EventCatalog/EventCatalog";
+import { events } from "../Data/catalogsData";
+import { catalogs } from "../Data/catalogsData";
+import Cart from "../Components/CartModal/CartModal";
+import Hero from "../Components/hero";
+// import Navbar from "../Components/Navbar";
 function Events() {
-  const addModal = () => {
-    ModalService.open(ConfirmModal);
+
+  const [cart, setCart] = useState([]);
+  const [showCart, setCartState] = useState(false);
+
+  const [showModal, setModalState] = useState(false);
+  const [modalProps, setModalProps] = useState({ header_value: "Test Header", body_value: "Test Body" });
+
+  const addToCart = (product) => {
+    setCart([...cart, { ...product }]);
   };
-  const events = [
-    {
-      img: logo,
-      title: "Superb Owl",
-      location: "Yum Center",
-      pricesFrom: 99,
-    },
-    {
-      img: fans,
-      title: "Event",
-      location: "Place",
-      pricesFrom: 49,
-    },
-  ];
-  const eventCards = events.map((events) =>
-  <EventCard
-    img={events.img}
-    title={events.title}
-    location={events.location}
-    pricesFrom={events.pricesFrom}
-  ></EventCard>
-  );
+  const removeFromCart = (productToRemove) => {
+    setCart(cart.filter((product) => product !== productToRemove));
+  }; 
+
+  const handleShowCart = () => {
+    setCartState(true);
+  }
+  const handleCloseCart = () => {
+    setCartState(false);
+  }
+  const handleHideModal = (confirmed, product) => {
+    if (confirmed) {
+      addToCart(product);
+    }
+    console.log(confirmed);
+    setModalState(false);
+  };
+  const handleModalPropChange = (value) => {
+    setModalState(true);
+    setModalProps(value);
+  };
 
   return (
     <div>
+      {/* Uncomment navbar when page is styled, currently overlapping things */}
+      {/* <Navbar /> */}
+      <Cart
+        show={showCart}
+        handleRemove={removeFromCart}
+        handleClose={handleCloseCart}
+        props={cart}
+      />
+      <ConfirmModal
+        show={showModal}
+        handleClose={handleHideModal}
+        props={modalProps}
+      />
       <div>Hello World</div>
-      <div>
-        <Button
-          onClick={() => {
-            console.log("Click");
-          }}
-          type={Button}
-        >
-          Click Me!
-        </Button>
-        <InputField
-          type="text"
-          placeholder="Enter Your Name"
-          label="Name"
-          name="name"
-        />
-      </div>
-      <ModalRoot />
-      <Button onClick={addModal}>Open Modal</Button>
-      {eventCards}
+      <div>Cart({cart.length})</div>
+
+      <Button onClick={handleShowCart}>Open Modal</Button>
+      <Hero />
+      <EventCatalog events={events} catalogName="Arts & Theater" handleClick={handleModalPropChange} ></EventCatalog>
+      <ProductTable catalog={catalogs} handleClick={handleModalPropChange}></ProductTable>
     </div>
   );
 }
