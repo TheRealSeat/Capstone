@@ -1,4 +1,4 @@
-import logo from '../Assets/Images/logo.svg';
+import logo from '../../Assets/Images/logo.svg';
 import './Navbar.scss'
 import { Link } from "react-router-dom";
 

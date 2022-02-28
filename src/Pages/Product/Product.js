@@ -1,6 +1,6 @@
-import './product.scss';
-import Navbar from './Navbar';
-import Hero from './hero';
+import './Product.scss';
+import Navbar from "../../Components/Navbar/Navbar";
+import Hero from '../../Components/Hero/Hero';
 
 
 function Product() {

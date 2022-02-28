@@ -1,5 +1,5 @@
 import './Footer.scss'
-import logo from '../Assets/Images/logo.svg';
+import logo from '../../Assets/Images/logo.svg';
 import {
     Button,
     Container,

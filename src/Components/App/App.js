@@ -1,9 +1,9 @@
 import './App.scss';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import HomePage from '../Pages/HomePage/HomePage';
-import Product from './product';
-import Events from '../Pages/Events';
-import NotFound from '../Pages/NotFound';
+import HomePage from '../../Pages/HomePage/HomePage';
+import Product from '../../Pages/Product/Product';
+import Events from '../../Pages/Events/Events';
+import NotFound from '../../Pages/NotFound/NotFound';
 
 
 function App() {
