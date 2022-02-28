@@ -1,6 +1,6 @@
-import heroimg from '../Assets/Images/hero_main.jpeg';
+import heroimg from '../../Assets/Images/hero_main.jpeg';
 import Carousel from 'react-bootstrap/Carousel'
-import './hero.scss'
+import './Hero.scss'
 
 function Hero() {
     return (

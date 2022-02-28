@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import Button from "../Components/UI/Button/Button";
-import ConfirmModal from "../Components/ConfirmModal/ConfirmModal";
-import ProductTable from "../Components/ProductTable/ProductTable";
-import EventCatalog from "../Components/EventCatalog/EventCatalog";
-import { events } from "../Data/catalogsData";
-import { catalogs } from "../Data/catalogsData";
-import Cart from "../Components/CartModal/CartModal";
-import Hero from "../Components/hero";
-// import Navbar from "../Components/Navbar";
+import Button from "../../Components/UI/Button/Button";
+import ConfirmModal from "../../Components/ConfirmModal/ConfirmModal";
+import ProductTable from "../../Components/ProductTable/ProductTable";
+import EventCatalog from "../../Components/EventCatalog/EventCatalog";
+import { events } from "../../Data/catalogsData";
+import { catalogs } from "../../Data/catalogsData";
+import Cart from "../../Components/CartModal/CartModal";
+import Hero from "../../Components/Hero/Hero";
+// import Navbar from "../../Components/Navbar";
 function Events() {
 
   const [cart, setCart] = useState([]);
