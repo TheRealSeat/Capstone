@@ -5,11 +5,11 @@ function Header() {
     return (
         <div className="Header">
             <Navbar />
-            <h1 className='header-container'>
+            <h1 className='Header-container'>
                 <div className="orange_large">TheRealSeat</div><div className="white_large">&nbsp;Capstone Project</div>
             </h1>
-            <span className="project-summary-container">
-                <p className="project-summary">
+            <span className="Project-summary-container">
+                <p className="Project-summary">
                     Summary of proposed project:
                     TheRealSeat is an event ticketing platform based in Louisville, KY. Our project proposal is to build an event
                     recommendation page which will show customers events that are relevant based on an algorithm. The project is not only

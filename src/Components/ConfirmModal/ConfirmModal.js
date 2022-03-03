@@ -4,7 +4,7 @@ import "./ConfirmModal.scss";
 const ConfirmModal = ({show, handleClose, props}) => {
   return (
     <>
-      <Modal show={show} fullscreen={true} dialogClassName="modal-content-style" onHide={handleClose} backdrop="static" keyboard={false} centered>
+      <Modal show={show}  dialogClassName="modal-content-style" onHide={handleClose} backdrop="static" keyboard={false} centered>
         <Modal.Header closeButton>
           <h3>{props.event_title}</h3>
         </Modal.Header>
@@ -16,7 +16,7 @@ const ConfirmModal = ({show, handleClose, props}) => {
           <Button onClick={() => handleClose(false)}>
             Cancel
           </Button>
-          <Button onClick={() => handleClose(true)}>
+          <Button onClick={() => handleClose(true, props)}>
             Confirm
           </Button>
         </Modal.Footer>

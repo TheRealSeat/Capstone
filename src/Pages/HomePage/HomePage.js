@@ -10,19 +10,21 @@ import
   Image,
   Header,
   Divider,
-  List,
   Menu, 
   Dropdown
 } from "semantic-ui-react";
-import Crowd_1 from './Crowd_1.jpg'
-import logo from './logo.svg'
-import Crowd_3 from './Crowd_3.jpg'
+import Crowd_1 from './Crowd_1.jpg';
+import logo from './logo.svg';
+import Crowd_3 from './Crowd_3.jpg';
+import Navbar from "../../Components/Navbar/Navbar";
+import Footer from "../../Components/Footer/Footer";
 
 
 import "./HomePage.scss";
 const HomePage = () => {
   return (
     <Segment inverted textAlign="center" vertical className="masthead">
+      <Navbar />
       <div>
         <header className="HomePage-header">
           <Container style={{ marginTop: "30vh" }}>
@@ -114,7 +116,7 @@ const HomePage = () => {
     </Segment>
     <div>
       <Container>
-      <Image src={Crowd_3}/>
+        <Image src={Crowd_3}/>
       </Container>
     </div>
 
@@ -198,58 +200,7 @@ const HomePage = () => {
           </header>
         </div>
       </div>
-      <div>
-      <Segment inverted vertical style={{ padding: '5em 0em' }}>
-      <Container>
-        <Grid divided inverted stackable>
-          <Grid.Row>
-            <Grid.Column width={3}>
-              <Header inverted as='h4' content='About' />
-              <List link inverted>
-                <List.Item as='a'>Vision</List.Item>
-                <List.Item as='a'>Contact</List.Item>
-                <List.Item as='a'>Careers</List.Item>
-                <List.Item as='a'>FAQ</List.Item>
-
-              </List>
-            </Grid.Column>
-            <Grid.Column width={3}>
-              <Header inverted as='h4' content='Services' />
-              <List link inverted>
-                <List.Item as='a'>Organizer</List.Item>
-                <List.Item as='a'>Fan</List.Item>
-                <List.Item as='a'>Plans</List.Item>
-                <List.Item as='a'>Pricing</List.Item>
-              </List>
-            </Grid.Column>
-            <Grid.Column width={7}>
-              <Header as='h2' inverted style={{color: '#fe9200'}}>
-              <Image avatar src={logo} />
-                TheRealSeat
-              </Header>
-              <p>
-                Sell Your Seats, Know Your Fans
-              </p>
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-      </Container>
-    </Segment>
-      </div>
-      <div>
-    <Button color='facebook'>
-      <Icon name='facebook' /> Facebook
-    </Button>
-    <Button color='twitter'>
-      <Icon name='twitter' /> Twitter
-    </Button>
-    <Button color='linkedin'>
-      <Icon name='linkedin' /> LinkedIn
-    </Button>
-    <Button color='instagram'>
-      <Icon name='instagram' /> Instagram
-    </Button>
-  </div>
+            <Footer />
     </Segment>
   );
 };
