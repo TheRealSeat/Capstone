@@ -4,12 +4,15 @@ import HomePage from '../../Pages/HomePage/HomePage';
 import Product from '../../Pages/Product/Product';
 import Events from '../../Pages/Events/Events';
 import NotFound from '../../Pages/NotFound/NotFound';
+import configureStore from '../../Store/configureStore';
+import { Provider } from 'react-redux';
 
 
 function App() {
-
+    const store = configureStore();
     return (
-        <BrowserRouter>
+        <Provider store={store}>
+            <BrowserRouter>
             <Routes>
                 <Route path="/" element={<HomePage />}/>
                 <Route path="/product" element={<Product />} />
@@ -17,6 +20,8 @@ function App() {
                 <Route path="*" element={<NotFound />} />
             </Routes>
         </BrowserRouter>
+        </Provider>
+        
     );
 }
 
