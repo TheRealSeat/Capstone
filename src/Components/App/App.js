@@ -4,7 +4,7 @@ import HomePage from '../../Pages/HomePage/HomePage';
 import Product from '../../Pages/Product/Product';
 import Events from '../../Pages/Events/Events';
 import NotFound from '../../Pages/NotFound/NotFound';
-import configureStore from '../../Store/configureStore';
+import configureStore from '../../Services/Store/configureStore';
 import { Provider } from 'react-redux';
 
 
