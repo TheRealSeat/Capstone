@@ -7,8 +7,6 @@ import { events } from "../../Data/catalogsData";
 import { catalogs } from "../../Data/catalogsData";
 import Cart from "../../Components/CartModal/CartModal";
 import Hero from "../../Components/Hero/Hero";
-import Footer from "../../Components/Footer/Footer";
-import Navbar from '../../Components/Navbar/Navbar';
 
 function Events() {
 
@@ -45,7 +43,6 @@ function Events() {
 
   return (
     <div>
-      <Navbar />
       <Cart
         show={showCart}
         handleRemove={removeFromCart}
@@ -64,7 +61,6 @@ function Events() {
       <Hero />
       <EventCatalog events={events} catalogName="Arts & Theater" handleClick={handleModalPropChange} ></EventCatalog>
       <ProductTable catalog={catalogs} handleClick={handleModalPropChange}></ProductTable>
-      <Footer />
     </div>
   );
 }
