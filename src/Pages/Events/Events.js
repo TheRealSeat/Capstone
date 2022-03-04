@@ -7,7 +7,9 @@ import { events } from "../../Data/catalogsData";
 import { catalogs } from "../../Data/catalogsData";
 import Cart from "../../Components/CartModal/CartModal";
 import Hero from "../../Components/Hero/Hero";
-// import Navbar from "../../Components/Navbar";
+import Footer from "../../Components/Footer/Footer";
+import Navbar from '../../Components/Navbar/Navbar';
+
 function Events() {
 
   const [cart, setCart] = useState([]);
@@ -43,8 +45,7 @@ function Events() {
 
   return (
     <div>
-      {/* Uncomment navbar when page is styled, currently overlapping things */}
-      {/* <Navbar /> */}
+      <Navbar />
       <Cart
         show={showCart}
         handleRemove={removeFromCart}
@@ -63,6 +64,7 @@ function Events() {
       <Hero />
       <EventCatalog events={events} catalogName="Arts & Theater" handleClick={handleModalPropChange} ></EventCatalog>
       <ProductTable catalog={catalogs} handleClick={handleModalPropChange}></ProductTable>
+      <Footer />
     </div>
   );
 }

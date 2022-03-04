@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../../Components/Navbar/Navbar';
 import { Link } from 'react-router-dom';
+import Footer from "../../Components/Footer/Footer";
 
 function NotFound() {
     return (
@@ -27,6 +28,7 @@ function NotFound() {
                     </p>
                 </div>
             </div>
+            <Footer />
         </div>
     )
 }
