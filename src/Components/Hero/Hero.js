@@ -1,31 +1,52 @@
 import heroimg from '../../Assets/Images/hero_main.jpeg';
 import Carousel from 'react-bootstrap/Carousel'
+import EventCard from '../EventCard/EventCard';
 import './Hero.scss'
 
 function Hero() {
     return (
     <div className="Hero">
-        <h2>This Carousel can be used to show featured events at the top of the landing / events page</h2>
-        <Carousel>
-        <Carousel.Item>
-            <img src={heroimg} alt="heroimg" className="hero-img"/>
+        <Carousel class='carousel'>
+        <Carousel.Item class='carousel-item'>
+            <EventCard
+            class="carousel-card"
+            img={heroimg}
+            title="Welcome to TheRealCapstone"
+            location="J.B. Speed School"
+            pricesFrom="0"
+            key="0"
+            handleClick='0'
+            ></EventCard>
             <Carousel.Caption>
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            <h3>Welcome to TheRealCapstone</h3>
             </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
-            <img src={heroimg} alt="heroimg" className="hero-img"/>
+            <EventCard
+            class="carousel-card"
+            img={heroimg}
+            title="Example Recommended Events"
+            location="Louisville"
+            pricesFrom="70"
+            key="1"
+            handleClick='0'
+            ></EventCard>
             <Carousel.Caption>
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <h3>Example of Where we will display recommended events</h3>
             </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
-            <img src={heroimg} alt="heroimg" className="hero-img"/>
+            <EventCard
+            class="carousel-card"
+            img={heroimg}
+            title="Example Recommended Events"
+            location="Nashville"
+            pricesFrom="200"
+            key="0"
+            handleClick='0'
+            ></EventCard>
             <Carousel.Caption>
-            <h3>Third slide label</h3>
-            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+            <h3>Example of Where we will display recommended events</h3>
             </Carousel.Caption>
         </Carousel.Item>
         </Carousel>
