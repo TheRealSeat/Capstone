@@ -9,9 +9,9 @@ function Navbar() {
                 <a href="https://www.therealseat.com/">
                     <img src={logo} alt="logo" />
                 </a>
-                <Link to="/product">
-                    <button type="button" class="product-button">
-                        Product Page
+                <Link to="/events">
+                    <button type="button" class="events-button">
+                        Events Page
                     </button>
                 </Link>
                 <Link to="/shopping">
