@@ -7,21 +7,19 @@ import { events } from "../../Data/catalogsData";
 import { catalogs } from "../../Data/catalogsData";
 import Cart from "../../Components/CartModal/CartModal";
 import Hero from "../../Components/Hero/Hero";
+import { useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
+import { addToCart } from '../../Services/Slices/cart'
 // import Navbar from "../../Components/Navbar";
 function Events() {
 
-  const [cart, setCart] = useState([]);
   const [showCart, setCartState] = useState(false);
 
   const [showModal, setModalState] = useState(false);
   const [modalProps, setModalProps] = useState({ header_value: "Test Header", body_value: "Test Body" });
 
-  const addToCart = (product) => {
-    setCart([...cart, { ...product }]);
-  };
-  const removeFromCart = (productToRemove) => {
-    setCart(cart.filter((product) => product !== productToRemove));
-  }; 
+  const cart = useSelector(state => state.cart)
+  const dispatch = useDispatch()
 
   const handleShowCart = () => {
     setCartState(true);
@@ -31,7 +29,7 @@ function Events() {
   }
   const handleHideModal = (confirmed, product) => {
     if (confirmed) {
-      addToCart(product);
+      dispatch(addToCart(product));
     }
     console.log(confirmed);
     setModalState(false);
@@ -47,9 +45,7 @@ function Events() {
       {/* <Navbar /> */}
       <Cart
         show={showCart}
-        handleRemove={removeFromCart}
         handleClose={handleCloseCart}
-        props={cart}
       />
       <ConfirmModal
         show={showModal}
@@ -57,7 +53,7 @@ function Events() {
         props={modalProps}
       />
       <div>Hello World</div>
-      <div>Cart({cart.length})</div>
+      <div>Cart({cart.cartEvents.length})</div>
 
       <Button onClick={handleShowCart}>Open Modal</Button>
       <Hero />
