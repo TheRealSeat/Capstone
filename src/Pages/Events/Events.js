@@ -6,8 +6,7 @@ import ProductTable from "../../Components/ProductTable/ProductTable";
 import { catalogs } from "../../Data/catalogsData";
 import Cart from "../../Components/CartModal/CartModal";
 import Hero from "../../Components/Hero/Hero";
-import { useDispatch } from 'react-redux'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { addToCart } from '../../Services/Slices/cart'
 
 function Events() {
