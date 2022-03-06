@@ -10,7 +10,7 @@ function Hero() {
         <Carousel.Item class='carousel-item'>
             <EventCard
             class="carousel-card"
-            img={heroimg}
+            img="https://images.pexels.com/photos/207691/pexels-photo-207691.jpeg?cs=srgb&dl=pexels-pixabay-207691.jpg&fm=jpg"
             title="Welcome to TheRealCapstone"
             location="J.B. Speed School"
             pricesFrom="0"
@@ -24,7 +24,7 @@ function Hero() {
         <Carousel.Item>
             <EventCard
             class="carousel-card"
-            img={heroimg}
+            img="https://images.pexels.com/photos/11032963/pexels-photo-11032963.jpeg?cs=srgb&dl=pexels-josh-hild-11032963.jpg&fm=jpg"
             title="Example Recommended Events"
             location="Louisville"
             pricesFrom="70"
@@ -32,13 +32,13 @@ function Hero() {
             handleClick='0'
             ></EventCard>
             <Carousel.Caption>
-            <h3>Example of Where we will display recommended events</h3>
+            <h3>Louisville Concerts</h3>
             </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
             <EventCard
             class="carousel-card"
-            img={heroimg}
+            img="https://images.pexels.com/photos/3722923/pexels-photo-3722923.jpeg?cs=srgb&dl=pexels-chait-goli-3722923.jpg&fm=jpg"
             title="Example Recommended Events"
             location="Nashville"
             pricesFrom="200"
@@ -46,7 +46,7 @@ function Hero() {
             handleClick='0'
             ></EventCard>
             <Carousel.Caption>
-            <h3>Example of Where we will display recommended events</h3>
+            <h3>Nashville Concerts</h3>
             </Carousel.Caption>
         </Carousel.Item>
         </Carousel>
