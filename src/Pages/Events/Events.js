@@ -8,6 +8,7 @@ import Cart from "../../Components/CartModal/CartModal";
 import Hero from "../../Components/Hero/Hero";
 import { useDispatch, useSelector } from 'react-redux'
 import { addToCart } from '../../Services/Slices/cart'
+import Navbar from '../../Components/Navbar/Navbar';
 
 function Events() {
 
@@ -39,6 +40,7 @@ function Events() {
 
   return (
     <div className = "EventPage">
+      
       <Cart
         show={showCart}
         handleClose={handleCloseCart}
@@ -48,6 +50,7 @@ function Events() {
         handleClose={handleHideModal}
         props={modalProps}
       />
+
       <div>Hello World</div>
       <div>Cart({cart.cartEvents.length})</div>
 

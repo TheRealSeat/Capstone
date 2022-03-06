@@ -1,27 +1,47 @@
-import logo from '../../Assets/Images/logo.svg';
-import './Navbar.scss'
-import { Link } from "react-router-dom";
+import React, { Component } from 'react'
+import { Menu, Segment } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
+export default class MenuExampleInvertedSecondary extends Component {
+  state = { activeItem: 'home' }
 
-function Navbar() {
+  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+
+  render() {
+    const { activeItem } = this.state
+
     return (
-        <div className="Navbar">
-            <div className='NavbarContents'>
-                <a href="https://www.therealseat.com/">
-                    <img src={logo} alt="logo" />
-                </a>
-                <Link to="/product">
-                    <button type="button" class="product-button">
-                        Product Page
-                    </button>
-                </Link>
-                <Link to="/shopping">
-                    <button type="button" class="shopping-button">
-                        Shopping Cart
-                    </button>
-                </Link>
-            </div>
-        </div>
+      <Segment inverted>
+        <Menu inverted pointing secondary>
+        <Link to='/'>
+          <Menu.Item
+            name='Home'
+            active={activeItem === 'Home'}
+            onClick={this.handleItemClick}
+          />
+        </Link>
+        <Link to='/Events'>
+          <Menu.Item
+            name='Events'
+            active={activeItem === 'Events'}
+            onClick={this.handleItemClick}
+          />
+        </Link>
+        <Link to='/'>
+          <Menu.Item
+            name='Fans'
+            active={activeItem === 'Fans'}
+            onClick={this.handleItemClick}
+          />
+        </Link>
+        <Link to='/'>
+          <Menu.Item
+            name='Organizers'
+            active={activeItem === 'Organizers'}
+            onClick={this.handleItemClick}
+          />
+        </Link>
+        </Menu>
+      </Segment>
     )
+  }
 }
-
-export default Navbar;
