@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Menu, Segment } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
-export default class MenuExampleInvertedSecondary extends Component {
+export default class Navbar extends Component {
   state = { activeItem: 'home' }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
@@ -45,3 +45,4 @@ export default class MenuExampleInvertedSecondary extends Component {
     )
   }
 }
+
