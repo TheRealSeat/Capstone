@@ -10,7 +10,7 @@ import Hero from "../../Components/Hero/Hero";
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 import { addToCart } from '../../Services/Slices/cart'
-// import Navbar from "../../Components/Navbar";
+
 function Events() {
 
   const [showCart, setCartState] = useState(false);
@@ -41,8 +41,6 @@ function Events() {
 
   return (
     <div>
-      {/* Uncomment navbar when page is styled, currently overlapping things */}
-      {/* <Navbar /> */}
       <Cart
         show={showCart}
         handleClose={handleCloseCart}
