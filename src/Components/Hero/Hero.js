@@ -1,4 +1,3 @@
-import heroimg from '../../Assets/Images/hero_main.jpeg';
 import Carousel from 'react-bootstrap/Carousel'
 import EventCard from '../EventCard/EventCard';
 import './Hero.scss'
