@@ -8,7 +8,6 @@ import Cart from "../../Components/CartModal/CartModal";
 import Hero from "../../Components/Hero/Hero";
 import { useDispatch, useSelector } from 'react-redux'
 import { addToCart } from '../../Services/Slices/cart'
-import Navbar from '../../Components/Navbar/Navbar';
 
 function Events() {
 
