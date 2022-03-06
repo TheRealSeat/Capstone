@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Events.scss";
 import Button from "../../Components/UI/Button/Button";
 import ConfirmModal from "../../Components/ConfirmModal/ConfirmModal";
 import ProductTable from "../../Components/ProductTable/ProductTable";
@@ -38,7 +39,7 @@ function Events() {
   };
 
   return (
-    <div>
+    <div className = "EventPage">
       <Cart
         show={showCart}
         handleClose={handleCloseCart}
