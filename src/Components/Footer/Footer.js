@@ -68,8 +68,8 @@ function Footer() {
                         <Button color='youtube'>
                             <Icon name='youtube' /> YouTube
                         </Button>
-                </a>
-            </div>
+                    </a>
+                </div>
             </div>
         </div>
     )
