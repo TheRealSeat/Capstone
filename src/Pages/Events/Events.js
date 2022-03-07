@@ -50,7 +50,9 @@ function Events() {
         props={modalProps}
       />
 
+
       <Button variant="secondary" size="lg" onClick={handleShowCart}>View Cart ({cart.cartEvents.length})</Button>
+
       <Hero />
       <ProductTable catalog={catalogs} handleClick={handleModalPropChange}></ProductTable>
     </div>
