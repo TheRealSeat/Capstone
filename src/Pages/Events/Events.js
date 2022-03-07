@@ -50,7 +50,7 @@ function Events() {
         props={modalProps}
       />
 
-      <div>Hello World</div>
+      <div>Shopping Cart</div>
       <div>Cart({cart.cartEvents.length})</div>
 
       <Button onClick={handleShowCart}>Open Modal</Button>
