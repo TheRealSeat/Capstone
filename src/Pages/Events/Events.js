@@ -39,6 +39,7 @@ function Events() {
 
   return (
     <div className = "EventPage">
+      
       <Cart
         show={showCart}
         handleClose={handleCloseCart}
@@ -48,6 +49,7 @@ function Events() {
         handleClose={handleHideModal}
         props={modalProps}
       />
+
       <div>Hello World</div>
       <div>Cart({cart.cartEvents.length})</div>
 
