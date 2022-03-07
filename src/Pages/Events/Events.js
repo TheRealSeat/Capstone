@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Events.scss";
-import Button from "../../Components/UI/Button/Button";
+import { Button } from "react-bootstrap";
 import ConfirmModal from "../../Components/ConfirmModal/ConfirmModal";
 import ProductTable from "../../Components/ProductTable/ProductTable";
 import { catalogs } from "../../Data/catalogsData";
@@ -50,10 +50,7 @@ function Events() {
         props={modalProps}
       />
 
-      <div>Hello World</div>
-      <div>Cart({cart.cartEvents.length})</div>
-
-      <Button onClick={handleShowCart}>Open Modal</Button>
+      <Button variant="secondary" size="lg" onClick={handleShowCart}>View Cart ({cart.cartEvents.length})</Button>
       <Hero />
       <ProductTable catalog={catalogs} handleClick={handleModalPropChange}></ProductTable>
     </div>
