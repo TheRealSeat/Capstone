@@ -8,14 +8,14 @@ import Cart from "../../Components/CartModal/CartModal";
 import Hero from "../../Components/Hero/Hero";
 import { useDispatch, useSelector } from 'react-redux'
 import { addToCart } from '../../Services/Slices/cart'
-
+import LoadingComponent from '../../Components/Loading/LoadingComponent'
 function Events() {
 
   const [showCart, setCartState] = useState(false);
 
   const [showModal, setModalState] = useState(false);
   const [modalProps, setModalProps] = useState({ header_value: "Test Header", body_value: "Test Body" });
-
+  const [loading,setLoading] = useState(true);
   const cart = useSelector(state => state.cart)
   const dispatch = useDispatch()
 
@@ -29,14 +29,13 @@ function Events() {
     if (confirmed) {
       dispatch(addToCart(product));
     }
-    console.log(confirmed);
     setModalState(false);
   };
   const handleModalPropChange = (value) => {
     setModalState(true);
     setModalProps(value);
   };
-
+  if(loading) return <LoadingComponent/>
   return (
     <div className = "EventPage">
       

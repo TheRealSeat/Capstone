@@ -2,9 +2,9 @@ import "./EventCard.scss";
 import React from "react";
 import { Card } from "react-bootstrap";
 
-const EventCard = ({ img, title, location, pricesFrom, handleClick }) => {
+const EventCard = ({ img, title, location, pricesFrom, handleClick,catalog }) => {
   const cardClicked = () => {
-    handleClick({event_title: title, event_location: location, event_pricesFrom: pricesFrom})
+    handleClick({event_title: title, event_location: location, event_pricesFrom: pricesFrom,image:img,catalog:catalog})
   }
   return (
     <div className="EventCard">

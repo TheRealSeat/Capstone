@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Menu, Segment } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
+import { NavLink} from 'react-router-dom'
 export default class Navbar extends Component {
   state = { activeItem: 'home' }
 
@@ -12,34 +12,34 @@ export default class Navbar extends Component {
     return (
       <Segment inverted>
         <Menu inverted pointing secondary>
-        <Link to='/'>
+        <NavLink to='/'>
           <Menu.Item
             name='Home'
             active={activeItem === 'Home'}
             onClick={this.handleItemClick}
           />
-        </Link>
-        <Link to='/Events'>
+        </NavLink>
+        <NavLink to='/Events'>
           <Menu.Item
             name='Events'
             active={activeItem === 'Events'}
             onClick={this.handleItemClick}
           />
-        </Link>
-        <Link to='/'>
+        </NavLink>
+        <NavLink to='/'>
           <Menu.Item
             name='Fans'
             active={activeItem === 'Fans'}
             onClick={this.handleItemClick}
           />
-        </Link>
-        <Link to='/'>
+        </NavLink>
+        <NavLink to='/'>
           <Menu.Item
             name='Organizers'
             active={activeItem === 'Organizers'}
             onClick={this.handleItemClick}
           />
-        </Link>
+        </NavLink>
         </Menu>
       </Segment>
     )
