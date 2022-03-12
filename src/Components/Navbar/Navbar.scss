@@ -1,7 +1,7 @@
 .Navbar {
     height: 60px;
     background-color: transparent;
-    padding: 5.6px 0px 5.6px 0px;
+    padding: 10px 0px 10px 0px;
     width: 100%;
     position: fixed;
     position: -webkit-sticky;
@@ -18,24 +18,24 @@
     padding: 10px 70.813px 10px 70.813px;
 }
 
-.product-button {
-    background-color: white;
-    color: black;
-    border: 2px solid white;
+.events-button {
+    background-color: black;
+    color: #ff7b00;
+    border: 2px solid black;
     font-size: 20px;
     margin: 4px 2px;
 }
 
-.product-button:hover {
+.events-button:hover {
     background-color: #ff7b00;
     color: black;
     border: 2px solid #ff7b00;
 }
 
 .shopping-button {
-    background-color: transparent;
-    color: white;
-    border: 2px solid white;
+    background-color: black;
+    color: #ff7b00;
+    border: 2px solid black;
     font-size: 20px;
     margin: 4px 2px;
 }
