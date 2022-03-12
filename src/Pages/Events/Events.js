@@ -15,7 +15,7 @@ function Events() {
 
   const [showModal, setModalState] = useState(false);
   const [modalProps, setModalProps] = useState({ header_value: "Test Header", body_value: "Test Body" });
-  const [loading,setLoading] = useState(true);
+  const [loading,setLoading] = useState(false);
   const cart = useSelector(state => state.cart)
   const dispatch = useDispatch()
 
