@@ -1,11 +1,9 @@
 import React from 'react';
-import Navbar from '../Components/Navbar';
 import { Link } from 'react-router-dom';
 
 function NotFound() {
     return (
         <div>
-            <Navbar />
             <div className="flex_vhcenter">
                 <div className="col">
                     <h1 className="orange_large">

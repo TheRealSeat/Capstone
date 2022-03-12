@@ -1,5 +1,5 @@
 import './Footer.scss'
-import logo from '../Assets/Images/logo.svg';
+import logo from '../../Assets/Images/logo.svg';
 import {
     Button,
     Container,
@@ -68,8 +68,8 @@ function Footer() {
                         <Button color='youtube'>
                             <Icon name='youtube' /> YouTube
                         </Button>
-                </a>
-            </div>
+                    </a>
+                </div>
             </div>
         </div>
     )
