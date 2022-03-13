@@ -10,6 +10,7 @@ const EventCatalog = ({ events, catalogName, handleClick }) => {
       img={events.img}
       title={events.title}
       location={events.location}
+      catalog={catalogName}
       pricesFrom={events.pricesFrom}
       key={index}
       handleClick={handleClick}
