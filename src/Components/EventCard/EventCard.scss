@@ -5,6 +5,7 @@
     border-radius: 8px;
     transition: 0.8s;
     overflow: hidden;
+    background-color: #505868;
     .ImgContainer {
         overflow: hidden;
       .Img {
@@ -16,11 +17,12 @@
     .Body {
       z-index: 1;
       .Title {
-        color: black;
+        color: #fffbfc;
         font-weight: 500;
+        
       }
       .Description {
-        color: dimgrey;
+        color: #FFFBFC;
       }
     }
   }

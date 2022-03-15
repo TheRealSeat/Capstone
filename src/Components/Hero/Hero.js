@@ -1,31 +1,26 @@
-import heroimg from '../../Assets/Images/hero_main.jpeg';
 import Carousel from 'react-bootstrap/Carousel'
 import './Hero.scss'
 
 function Hero() {
     return (
     <div className="Hero">
-        <h2>This Carousel can be used to show featured events at the top of the landing / events page</h2>
-        <Carousel>
-        <Carousel.Item>
-            <img src={heroimg} alt="heroimg" className="hero-img"/>
+        <Carousel className='carousel'>
+        <Carousel.Item className='carousel-item'>          
+            <img className="hero-img" alt="" src='https://images.pexels.com/photos/207691/pexels-photo-207691.jpeg?cs=srgb&dl=pexels-pixabay-207691.jpg&fm=jpg' />
             <Carousel.Caption>
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            <h3>Welcome to TheRealCapstone</h3>
             </Carousel.Caption>
         </Carousel.Item>
-        <Carousel.Item>
-            <img src={heroimg} alt="heroimg" className="hero-img"/>
+        <Carousel.Item className='carousel-item'>       
+            <img className="hero-img" alt="" src="https://images.pexels.com/photos/11032963/pexels-photo-11032963.jpeg?cs=srgb&dl=pexels-josh-hild-11032963.jpg&fm=jpg"/>            
             <Carousel.Caption>
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <h3>Louisville Concerts</h3>
             </Carousel.Caption>
         </Carousel.Item>
-        <Carousel.Item>
-            <img src={heroimg} alt="heroimg" className="hero-img"/>
+        <Carousel.Item className='carousel-item'>      
+            <img className="hero-img" alt="" src="https://images.pexels.com/photos/3722923/pexels-photo-3722923.jpeg?cs=srgb&dl=pexels-chait-goli-3722923.jpg&fm=jpg"/>           
             <Carousel.Caption>
-            <h3>Third slide label</h3>
-            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+            <h3>Nashville Concerts</h3>
             </Carousel.Caption>
         </Carousel.Item>
         </Carousel>

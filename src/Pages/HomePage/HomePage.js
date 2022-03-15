@@ -19,6 +19,7 @@ import Crowd_3 from './Crowd_3.jpg';
 
 
 import "./HomePage.scss";
+import { Link } from "react-router-dom";
 const HomePage = () => {
   return (
     <Segment inverted textAlign="center" vertical className="masthead">
@@ -40,7 +41,7 @@ const HomePage = () => {
             </h1>
 
             <div>
-              <Button size="huge" inverted style={{ marginTop: "20px" }}>
+              <Button size="huge" inverted style={{ marginTop: "20px" }} as={Link} to='/Events'>
                 Get started
                 <Icon name="right arrow" inverted />
               </Button>
