@@ -1,0 +1,43 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  TRC Serverless Template
+
+Globals:
+  Function:
+    Timeout: 15
+
+Parameters:
+  ENVIRONMENT:
+    Description: 'Required. Lamda At Edge Origin Response'
+    Type: 'String'
+
+Resources:
+  TestLamda:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "TestLamda_${ENVIRONMENT}"
+      CodeUri: lamdas/temp/get
+      Handler: app.lambda_handler
+      Runtime: python3.8
+      Environment:
+        Variables:
+          ENVIRONMENT: !Sub "${ENVIRONMENT}"
+      Events:
+        HelloWorld:
+          Type: Api 
+          Properties:
+            Path: /hello
+            Method: get
+  #EventsGet:
+    #Type: AWS::Serverless::Function
+
+  #TransactionPost:
+    #Type: AWS::Serverless::Function
+
+  #EventDatabase
+    #Type: AWS::Dynamo::Table
+  
+  #TransactionDatabase:
+    #Type: AWS::Dynamo::Table
+  
