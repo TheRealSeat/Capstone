@@ -29,6 +29,7 @@ const requests = {
 const Event = {
   list: () => requests.get("events"),
   details: (id) => requests.get(`event/${id}`),
+  listType: (type) => requests.get(`events?type=${type}`),
 };
 
 //Add new endpoints to this object
