@@ -29,6 +29,54 @@ Resources:
           Properties:
             Path: /hello
             Method: get
+  
+  Event_API_Gateway:
+  Type: AWS::Serverless::Api
+  Properties:
+    Name: Event_API
+    StageName: $default
+
+  Get_All_Events_Lambda:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: lambdas/Get_All_Events/get
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.8
+      Environment:
+        Variables:
+          ENVIRONMENT: !Sub "${ENVIRONMENT}"
+      Events:
+        Type: Api
+        Properties:
+          RestApiId: !Ref Event_API_Gateway
+          Path: /get_all_events
+        Method: GET
+
+  DynamoDBTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: EventID
+          AttributeType: S
+        - AttributeName: EventTitle
+          AttributeType: S
+        - AttributeName: EventLocation
+          AttributeType: S
+        - AttributeName: EventType
+          AttributeType: S
+        - AttributeName: EventPrice
+          AttributeType: S
+        - AttributeName: Img
+          AttributeType: S
+      KeySchema:
+        - AttributeName: EventID
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+      StreamSpecification:
+        StreamViewType: NEW_IMAGE
+
   #EventsGet:
     #Type: AWS::Serverless::Function
 
