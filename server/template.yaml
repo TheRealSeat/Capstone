@@ -50,7 +50,7 @@ Resources:
         Properties:
           RestApiId: !Ref Event_API_Gateway
           Path: /get_all_events
-        Method: GET
+          Method: GET
 
   DynamoDBTable:
     Type: AWS::DynamoDB::Table
@@ -76,6 +76,7 @@ Resources:
         WriteCapacityUnits: 5
       StreamSpecification:
         StreamViewType: NEW_IMAGE
+      BillingMode: PAY_PER_REQUEST
 
   #EventsGet:
     #Type: AWS::Serverless::Function
