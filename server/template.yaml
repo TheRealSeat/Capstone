@@ -49,7 +49,7 @@ Resources:
         Type: Api
         Properties:
           RestApiId: !Ref Event_API_Gateway
-          Path: /get_all_events
+          Path: /events
         Method: GET
 
   DynamoDBTable:
