@@ -2,7 +2,9 @@ import json
 import boto3
 from boto3.dynamodb.connections import Key
 
+client = boto3.client('dynamodb')
 def lambda_handler(event, context):
+    global client
     response_value = {
         'statusCode': 500,
         'body': json.dumps({"error": "Internal Error"}),
@@ -11,7 +13,6 @@ def lambda_handler(event, context):
             'Access-Control-Allow-Origin': '*'
         }
     }
-    client = boto3.client('dynamodb')
     try:
         data = client.scan(TableName="Events")
         response_value = {
