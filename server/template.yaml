@@ -50,9 +50,9 @@ Resources:
         Properties:
           RestApiId: !Ref Event_API_Gateway
           Path: /events
-        Method: GET
+          Method: GET
 
-  DynamoDBTable:
+  Events_DynamoDB_Table:
     Type: AWS::DynamoDB::Table
     Properties:
       AttributeDefinitions:
