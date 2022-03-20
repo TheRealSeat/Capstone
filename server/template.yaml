@@ -76,6 +76,7 @@ Resources:
         WriteCapacityUnits: 5
       StreamSpecification:
         StreamViewType: NEW_IMAGE
+      BillingMode: PAY_PER_REQUEST
 
   #EventsGet:
     #Type: AWS::Serverless::Function
