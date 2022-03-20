@@ -1,0 +1,39 @@
+{
+  "events": [
+    {
+      "img": "https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      "type": "Sports",
+      "title": "The Band",
+      "location": "The Louisville Palace",
+      "pricesFrom": 49
+    },
+    {
+      "img": "https://images.pexels.com/photos/167636/pexels-photo-167636.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      "type": "Concerts",
+      "title": "Kanye West",
+      "location": "KFC Yum! Center",
+      "pricesFrom": 49
+    },
+    {
+      "img": "https://images.pexels.com/photos/167636/pexels-photo-167636.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      "type": "Family",
+      "title": "Kanye West",
+      "location": "KFC Yum! Center",
+      "pricesFrom": 49
+    },
+    {
+      "img": "https://images.pexels.com/photos/1916821/pexels-photo-1916821.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      "type": "Comedy",
+      "title": "Mitski",
+      "location": "The Louisville Palace",
+      "pricesFrom": 49
+    },
+    {
+      "img": "https://images.pexels.com/photos/1916821/pexels-photo-1916821.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      "type": "Arts-Theater",
+      "title": "Mitski",
+      "location": "The Louisville Palace",
+      "pricesFrom": 49
+    }
+  ]
+}
