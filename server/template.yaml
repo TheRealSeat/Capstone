@@ -36,11 +36,12 @@ Resources:
     Name: Event_API
     StageName: $default
 
-  Get_All_Events_Lambda:
+  EventsGet:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: lambdas/Get_All_Events/get
-      Handler: lambda_function.lambda_handler
+      FunctionName: !Sub "EventsGet__${ENVIRONMENT}"
+      CodeUri: lambdas/events/get
+      Handler: getEvents.getEvents
       Runtime: python3.8
       Environment:
         Variables:
