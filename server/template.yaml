@@ -13,33 +13,17 @@ Parameters:
     Type: 'String'
 
 Resources:
-  TestLamda:
-    Type: AWS::Serverless::Function
-    Properties:
-      FunctionName: !Sub "TestLamda_${ENVIRONMENT}"
-      CodeUri: lamdas/temp/get
-      Handler: app.lambda_handler
-      Runtime: python3.8
-      Environment:
-        Variables:
-          ENVIRONMENT: !Sub "${ENVIRONMENT}"
-      Events:
-        HelloWorld:
-          Type: Api 
-          Properties:
-            Path: /hello
-            Method: get
   
-  Event_API_Gateway:
-  Type: AWS::Serverless::Api
-  Properties:
-    Name: Event_API
-    StageName: $default
+  EventAPI:
+    Type: AWS::Serverless::Api
+    Properties:
+      Name: !SUB "EventAPI_${ENVIRONMENT}"
+      StageName: Prod
 
   EventsGet:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: !Sub "EventsGet__${ENVIRONMENT}"
+      FunctionName: !Sub "EventsGet_${ENVIRONMENT}"
       CodeUri: lambdas/events/get
       Handler: getEvents.getEvents
       Runtime: python3.8
@@ -47,15 +31,17 @@ Resources:
         Variables:
           ENVIRONMENT: !Sub "${ENVIRONMENT}"
       Events:
-        Type: Api
-        Properties:
-          RestApiId: !Ref Event_API_Gateway
-          Path: /events
-          Method: GET
+        GetEvents:
+          Type: Api
+          Properties:
+            RestApiId: !Ref EventAPI
+            Path: /api/events
+            Method: GET
 
-  Events_DynamoDB_Table:
+  EventsDynamoDB:
     Type: AWS::DynamoDB::Table
     Properties:
+      TableName: "Events_${ENVIRONMENT}"
       AttributeDefinitions:
         - AttributeName: EventID
           AttributeType: S

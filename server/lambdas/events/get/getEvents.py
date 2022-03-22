@@ -1,9 +1,10 @@
 import json
 import boto3
+import os
 from boto3.dynamodb.connections import Key
 
 client = boto3.client('dynamodb')
-
+ENVIRONMENT = os.environ['ENVIRONMENT']
 def getEvents(event, context):
     global client
     response_value = {
@@ -15,7 +16,7 @@ def getEvents(event, context):
         }
     }
     try:
-        data = client.scan(TableName="Events")
+        data = client.scan(TableName='Events_' + ENVIRONMENT)
         response_value = {
             'statusCode': 200,
             'body': json.dumps(data['Items']),
