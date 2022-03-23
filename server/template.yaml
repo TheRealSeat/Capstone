@@ -9,7 +9,7 @@ Globals:
 
 Parameters:
   ENVIRONMENT:
-    Description: "Required. Lamda At Edge Origin Response"
+    Description: "Required. Enviroment that will be deployed in"
     Type: "String"
 
 Resources:
@@ -27,7 +27,7 @@ Resources:
       Handler: getEvents.getEvents
       Runtime: python3.8
       Policies:
-        - DynamoDBCrudPolicy:
+        - DynamoDBReadPolicy:
             TableName: !Sub "Events_${ENVIRONMENT}"
       Environment:
         Variables:
