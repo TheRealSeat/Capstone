@@ -1,7 +1,7 @@
 import json
 import boto3
 import os
-from boto3.dynamodb.connections import Key
+from boto3.dynamodb.conditions import Key
 
 client = boto3.client('dynamodb')
 ENVIRONMENT = os.environ['ENVIRONMENT']
