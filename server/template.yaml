@@ -54,6 +54,20 @@ Resources:
         StreamViewType: NEW_IMAGE
       BillingMode: PAY_PER_REQUEST
 
+  TransactionDynamoDB:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub "User_Transactions${ENVIRONMENT}"
+      AttributeDefinitions:
+        - AttributeName: EventID
+          AttributeType: S
+      KeySchema:
+        - AttributeName: EventID
+          KeyType: HASH
+      StreamSpecification:
+        StreamViewType: NEW_IMAGE
+      BillingMode: PAY_PER_REQUEST
+
   #EventsGet:
   #Type: AWS::Serverless::Function
 

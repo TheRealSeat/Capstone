@@ -1,0 +1,214 @@
+{
+  "user_transactions": [
+    {
+      "TransactionId": {
+        "S": "0b6921b1-18ee-4129-bedb-76ec6da63a66"
+      },
+      "TransactionDetails": {
+        "M": {
+          "EventId": {
+            "S": "sne2374r-6483-2934-29o2-p2kj482j1n29"
+          },
+          "Timestamp": {
+            "S": "10:00am"
+          },
+          "TotalTickets": {
+            "N": "2"
+          },
+          "TotalPrice": {
+            "N": "100"
+          }
+        }
+      }
+    },
+    {
+      "TransactionId": {
+        "S": "7cd89b20-641f-4be9-be40-071eeb3b2f2d"
+      },
+      "TransactionDetails": {
+        "M": {
+          "EventId": {
+            "S": "a8e0f6eb-a77e-49c9-a3a9-181b1aa54659"
+          },
+          "Timestamp": {
+            "S": "1:00pm"
+          },
+          "TotalTickets": {
+            "N": "4"
+          },
+          "TotalPrice": {
+            "N": "1000"
+          }
+        }
+      }
+    },
+    {
+      "TransactionId": {
+        "S": "db80fc55-9004-4c61-8c39-3dfb71b20e9e"
+      },
+      "TransactionDetails": {
+        "M": {
+          "EventId": {
+            "S": "ed13a3a6-f3f8-4ced-9dfa-87c8f3ad22b1"
+          },
+          "Timestamp": {
+            "S": "8:00am"
+          },
+          "TotalTickets": {
+            "N": "1"
+          },
+          "TotalPrice": {
+            "N": "75"
+          }
+        }
+      }
+    },
+    {
+      "TransactionId": {
+        "S": "e3b38f77-24f2-4827-93da-26d41f3b6964"
+      },
+      "TransactionDetails": {
+        "M": {
+          "EventId": {
+            "S": "ed13a3a6-f3f8-4ced-9dfa-87c8f3ad22b1"
+          },
+          "Timestamp": {
+            "S": "7:00pm"
+          },
+          "TotalTickets": {
+            "N": "2"
+          },
+          "TotalPrice": {
+            "N": "50"
+          }
+        }
+      }
+    },
+    {
+      "TransactionId": {
+        "S": "8003b114-22b6-4fe1-ad1a-c1c604a3028c"
+      },
+      "TransactionDetails": {
+        "M": {
+          "EventId": {
+            "S": "a8e0f6eb-a77e-49c9-a3a9-181b1aa54659"
+          },
+          "Timestamp": {
+            "S": "10:00am"
+          },
+          "TotalTickets": {
+            "N": "10"
+          },
+          "TotalPrice": {
+            "N": "850"
+          }
+        }
+      }
+    },
+    {
+      "TransactionId": {
+        "S": "a97ee1e9-2e73-49e2-b30f-65ebb2c9f50e"
+      },
+      "TransactionDetails": {
+        "M": {
+          "EventId": {
+            "S": "sne2374r-6483-2934-29o2-p2kj482j1n29"
+          },
+          "Timestamp": {
+            "S": "10:00am"
+          },
+          "TotalTickets": {
+            "N": "6"
+          },
+          "TotalPrice": {
+            "N": "600"
+          }
+        }
+      }
+    },
+    {
+      "TransactionId": {
+        "S": "e30a0f9f-2438-4ca5-b1fd-a7af5242aaef"
+      },
+      "TransactionDetails": {
+        "M": {
+          "EventId": {
+            "S": "adde1293-2ba6-4410-b605-e5ae921f5bfd"
+          },
+          "Timestamp": {
+            "S": "9:30pm"
+          },
+          "TotalTickets": {
+            "N": "2"
+          },
+          "TotalPrice": {
+            "N": "60"
+          }
+        }
+      }
+    },
+    {
+      "TransactionId": {
+        "S": "8b6c6091-0a5c-4cf9-86df-9a53680b5000"
+      },
+      "TransactionDetails": {
+        "M": {
+          "EventId": {
+            "S": "34ca71bc-7728-4410-a768-d223b9ddb782"
+          },
+          "Timestamp": {
+            "S": "6:00pm"
+          },
+          "TotalTickets": {
+            "N": "2"
+          },
+          "TotalPrice": {
+            "N": "160"
+          }
+        }
+      }
+    },
+    {
+      "TransactionId": {
+        "S": "1c797d3f-3d0e-4bb9-8d82-391d6cb98f8f"
+      },
+      "TransactionDetails": {
+        "M": {
+          "EventId": {
+            "S": "2b6e7250-2565-4911-85a6-1adb47479609"
+          },
+          "Timestamp": {
+            "S": "1:00pm"
+          },
+          "TotalTickets": {
+            "N": "5"
+          },
+          "TotalPrice": {
+            "N": "290"
+          }
+        }
+      }
+    },
+    {
+      "TransactionId": {
+        "S": "1d9807fb-688b-4087-b9fd-35c5e96abf01"
+      },
+      "TransactionDetails": {
+        "M": {
+          "EventId": {
+            "S": "adde1293-2ba6-4410-b605-e5ae921f5bfd"
+          },
+          "Timestamp": {
+            "S": "5:00pm"
+          },
+          "TotalTickets": {
+            "N": "3"
+          },
+          "TotalPrice": {
+            "N": "150"
+          }
+        }
+      }
+    }
+  ]
+}
