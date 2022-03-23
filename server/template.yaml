@@ -16,19 +16,19 @@ Resources:
   EventAPI:
     Type: AWS::Serverless::Api
     Properties:
-      Name: !Sub "EventAPI_${ENVIRONMENT}"
+      Name: !Sub "EventAPI"
       StageName: Prod
 
   EventsGet:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: !Sub "EventsGet_${ENVIRONMENT}"
+      FunctionName: !Sub "EventsGet"
       CodeUri: lambdas/events/get
       Handler: getEvents.getEvents
       Runtime: python3.8
       Policies:
         - DynamoDBReadPolicy:
-            TableName: !Sub "Events_${ENVIRONMENT}"
+            TableName: !Sub "Events"
       Environment:
         Variables:
           ENVIRONMENT: !Sub "${ENVIRONMENT}"
@@ -42,8 +42,9 @@ Resources:
 
   EventsDynamoDB:
     Type: AWS::DynamoDB::Table
+    DeletionPolicy: Retain
     Properties:
-      TableName: !Sub "Events_${ENVIRONMENT}"
+      TableName: !Sub "Events"
       AttributeDefinitions:
         - AttributeName: EventID
           AttributeType: S
@@ -56,6 +57,7 @@ Resources:
 
   TransactionDynamoDB:
     Type: AWS::DynamoDB::Table
+    DeletionPolicy: Retain
     Properties:
       TableName: !Sub "User_Transactions${ENVIRONMENT}"
       AttributeDefinitions:
