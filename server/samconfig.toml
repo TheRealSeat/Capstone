@@ -1,9 +1,0 @@
-version = 0.1
-[default]
-[default.deploy]
-[default.deploy.parameters]
-region = "us-east-1"
-confirm_changeset = true
-capabilities = "CAPABILITY_IAM"
-disable_rollback = true
-image_repositories = []
