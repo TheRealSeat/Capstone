@@ -26,6 +26,9 @@ Resources:
       CodeUri: lambdas/events/get
       Handler: getEvents.getEvents
       Runtime: python3.8
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Sub "Events_${ENVIRONMENT}"
       Environment:
         Variables:
           ENVIRONMENT: !Sub "${ENVIRONMENT}"
