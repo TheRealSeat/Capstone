@@ -1,4 +1,4 @@
-AWSTemplateFormatVersion: '2010-09-09'
+AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
 Description: >
   TRC Serverless Template
@@ -9,15 +9,14 @@ Globals:
 
 Parameters:
   ENVIRONMENT:
-    Description: 'Required. Lamda At Edge Origin Response'
-    Type: 'String'
+    Description: "Required. Lamda At Edge Origin Response"
+    Type: "String"
 
 Resources:
-  
   EventAPI:
     Type: AWS::Serverless::Api
     Properties:
-      Name: !SUB "EventAPI_${ENVIRONMENT}"
+      Name: !Sub "EventAPI_${ENVIRONMENT}"
       StageName: Prod
 
   EventsGet:
@@ -41,39 +40,25 @@ Resources:
   EventsDynamoDB:
     Type: AWS::DynamoDB::Table
     Properties:
-      TableName: "Events_${ENVIRONMENT}"
+      TableName: !Sub "Events_${ENVIRONMENT}"
       AttributeDefinitions:
         - AttributeName: EventID
-          AttributeType: S
-        - AttributeName: EventTitle
-          AttributeType: S
-        - AttributeName: EventLocation
-          AttributeType: S
-        - AttributeName: EventType
-          AttributeType: S
-        - AttributeName: EventPrice
-          AttributeType: S
-        - AttributeName: Img
           AttributeType: S
       KeySchema:
         - AttributeName: EventID
           KeyType: HASH
-      ProvisionedThroughput:
-        ReadCapacityUnits: 5
-        WriteCapacityUnits: 5
       StreamSpecification:
         StreamViewType: NEW_IMAGE
       BillingMode: PAY_PER_REQUEST
 
   #EventsGet:
-    #Type: AWS::Serverless::Function
+  #Type: AWS::Serverless::Function
 
   #TransactionPost:
-    #Type: AWS::Serverless::Function
+  #Type: AWS::Serverless::Function
 
   #EventDatabase
-    #Type: AWS::Dynamo::Table
-  
+  #Type: AWS::Dynamo::Table
+
   #TransactionDatabase:
-    #Type: AWS::Dynamo::Table
-  
+  #Type: AWS::Dynamo::Table
