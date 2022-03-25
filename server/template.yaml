@@ -40,11 +40,11 @@ Resources:
             Path: /api/events
             Method: GET
 
-  EventsDynamoDB:
+  Live_EventsDynamoDB:
     Type: AWS::DynamoDB::Table
     DeletionPolicy: Retain
     Properties:
-      TableName: !Sub "Events"
+      TableName: !Sub "Events_Live"
       AttributeDefinitions:
         - AttributeName: EventID
           AttributeType: S
@@ -55,11 +55,41 @@ Resources:
         StreamViewType: NEW_IMAGE
       BillingMode: PAY_PER_REQUEST
 
-  TransactionDynamoDB:
+  Live_TransactionDynamoDB:
     Type: AWS::DynamoDB::Table
     DeletionPolicy: Retain
     Properties:
-      TableName: !Sub "User_Transactions${ENVIRONMENT}"
+      TableName: !Sub "User_Transactions_Live"
+      AttributeDefinitions:
+        - AttributeName: EventID
+          AttributeType: S
+      KeySchema:
+        - AttributeName: EventID
+          KeyType: HASH
+      StreamSpecification:
+        StreamViewType: NEW_IMAGE
+      BillingMode: PAY_PER_REQUEST
+
+  Dev_EventsDynamoDB:
+    Type: AWS::DynamoDB::Table
+    DeletionPolicy: Retain
+    Properties:
+      TableName: !Sub "Events_Dev"
+      AttributeDefinitions:
+        - AttributeName: EventID
+          AttributeType: S
+      KeySchema:
+        - AttributeName: EventID
+          KeyType: HASH
+      StreamSpecification:
+        StreamViewType: NEW_IMAGE
+      BillingMode: PAY_PER_REQUEST
+
+  Dev_TransactionDynamoDB:
+    Type: AWS::DynamoDB::Table
+    DeletionPolicy: Retain
+    Properties:
+      TableName: !Sub "User_Transactions_Dev"
       AttributeDefinitions:
         - AttributeName: EventID
           AttributeType: S
