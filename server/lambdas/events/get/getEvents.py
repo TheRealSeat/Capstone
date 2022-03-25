@@ -1,12 +1,14 @@
 import json
 import boto3
 import os
-from boto3.dynamodb.conditions import Key
+from boto3.dynamodb.conditions import Key, Attr
 
-client = boto3.client('dynamodb')
+dynamodb = boto3.resource('dynamodb')
 ENVIRONMENT = os.environ['ENVIRONMENT']
+
+
 def getEvents(event, context):
-    global client
+    global dynamodb
     response_value = {
         'statusCode': 500,
         'body': json.dumps({"error": "Internal Error"}),
@@ -16,7 +18,15 @@ def getEvents(event, context):
         }
     }
     try:
-        data = client.scan(TableName='Events_' + ENVIRONMENT)
+        print(event["queryStringParameters"])
+        table = dynamodb.Table('Events_' + ENVIRONMENT)
+        if event["queryStringParameters"] is not None:
+            if 'EventType' in event["queryStringParameters"]:
+                data = table.scan(
+                    FilterExpression=Attr("EventType").eq(event["queryStringParameters"]["EventType"]))
+        else:
+            data = table.scan()
+
         response_value = {
             'statusCode': 200,
             'body': json.dumps(data['Items']),
