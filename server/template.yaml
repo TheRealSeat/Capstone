@@ -19,6 +19,12 @@ Resources:
       Name: !Sub "EventAPI_${ENVIRONMENT}"
       StageName: Prod
 
+  UserTransactionAPI:
+    Type: AWS::Serverless::Api
+    Properties:
+      Name: !Sub "UserTransactionAPI_${ENVIRONMENT}"
+      StageName: Prod
+
   EventsGet:
     Type: AWS::Serverless::Function
     Properties:
@@ -39,6 +45,31 @@ Resources:
             RestApiId: !Ref EventAPI
             Path: /api/events
             Method: GET
+            RequestParameters:
+              - method.request.querystring.EventType:
+                  Required: false
+                  Caching: false
+
+  TransactionsPost:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "TransactionsPost_${ENVIRONMENT}"
+      CodeUri: lambdas/transactions/post
+      Handler: postTransactions.postTransactions
+      Runtime: python3.8
+      Policies:
+        - DynamoDBWritePolicy:
+            TableName: !Sub "User_Transactions_${ENVIRONMENT}"
+      Environment:
+        Variables:
+          ENVIRONMENT: !Sub "${ENVIRONMENT}"
+      Events:
+        PostTransaction:
+          Type: Api
+          Properties:
+            RestApiId: !Ref UserTransactionAPI
+            Path: /api/UserTransactions
+            Method: POST
 
   EventsDynamoDB:
     Type: AWS::DynamoDB::Table
@@ -54,15 +85,15 @@ Resources:
         StreamViewType: NEW_IMAGE
       BillingMode: PAY_PER_REQUEST
 
-  TransactionDynamoDB:
+  TransactionsDynamoDB:
     Type: AWS::DynamoDB::Table
     Properties:
-      TableName: !Sub "User_Transactions${ENVIRONMENT}"
+      TableName: !Sub "User_Transactions_${ENVIRONMENT}"
       AttributeDefinitions:
-        - AttributeName: EventID
+        - AttributeName: TransactionID
           AttributeType: S
       KeySchema:
-        - AttributeName: EventID
+        - AttributeName: TransactionID
           KeyType: HASH
       StreamSpecification:
         StreamViewType: NEW_IMAGE
