@@ -13,13 +13,19 @@ Parameters:
     Type: "String"
 
 Resources:
-  EventAPI:
+  Dev_EventAPI:
     Type: AWS::Serverless::Api
     Properties:
-      Name: !Sub "EventAPI"
+      Name: !Sub "EventAPI_Dev"
       StageName: Prod
 
-  EventsGet:
+  Live_EventAPI:
+    Type: AWS::Serverless::Api
+    Properties:
+      Name: !Sub "EventAPI_Live"
+      StageName: Prod
+
+  EventsGet_Dev:
     Type: AWS::Serverless::Function
     Properties:
       FunctionName: !Sub "EventsGet"
@@ -28,7 +34,7 @@ Resources:
       Runtime: python3.8
       Policies:
         - DynamoDBReadPolicy:
-            TableName: !Sub "Events"
+            TableName: !Sub "Events_Dev"
       Environment:
         Variables:
           ENVIRONMENT: !Sub "${ENVIRONMENT}"
@@ -36,7 +42,28 @@ Resources:
         GetEvents:
           Type: Api
           Properties:
-            RestApiId: !Ref EventAPI
+            RestApiId: !Ref EventAPI_Dev
+            Path: /api/events
+            Method: GET
+
+  EventsGet_Live:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "EventsGet"
+      CodeUri: lambdas/events/get
+      Handler: getEvents.getEvents
+      Runtime: python3.8
+      Policies:
+        - DynamoDBReadPolicy:
+            TableName: !Sub "Events_Live"
+      Environment:
+        Variables:
+          ENVIRONMENT: !Sub "${ENVIRONMENT}"
+      Events:
+        GetEvents:
+          Type: Api
+          Properties:
+            RestApiId: !Ref EventAPI_Live
             Path: /api/events
             Method: GET
 
