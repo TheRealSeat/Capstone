@@ -1,4 +1,4 @@
-AWSTemplateFormatVersion: '2010-09-09'
+AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
 Description: >
   TRC Serverless Template
@@ -9,84 +9,104 @@ Globals:
 
 Parameters:
   ENVIRONMENT:
-    Description: 'Required. Lamda At Edge Origin Response'
-    Type: 'String'
+    Description: "Required. Enviroment that will be deployed in"
+    Type: "String"
 
 Resources:
-  TestLamda:
+  EventAPI:
+    Type: AWS::Serverless::Api
+    Properties:
+      Name: !Sub "EventAPI_${ENVIRONMENT}"
+      StageName: Prod
+
+  UserTransactionAPI:
+    Type: AWS::Serverless::Api
+    Properties:
+      Name: !Sub "UserTransactionAPI_${ENVIRONMENT}"
+      StageName: Prod
+
+  EventsGet:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: !Sub "TestLamda_${ENVIRONMENT}"
-      CodeUri: lamdas/temp/get
-      Handler: app.lambda_handler
+      FunctionName: !Sub "EventsGet_${ENVIRONMENT}"
+      CodeUri: lambdas/events/get
+      Handler: getEvents.getEvents
       Runtime: python3.8
+      Policies:
+        - DynamoDBReadPolicy:
+            TableName: !Sub "Events_${ENVIRONMENT}"
       Environment:
         Variables:
           ENVIRONMENT: !Sub "${ENVIRONMENT}"
       Events:
-        HelloWorld:
-          Type: Api 
+        GetEvents:
+          Type: Api
           Properties:
-            Path: /hello
-            Method: get
-  
-  Event_API_Gateway:
-  Type: AWS::Serverless::Api
-  Properties:
-    Name: Event_API
-    StageName: $default
+            RestApiId: !Ref EventAPI
+            Path: /api/events
+            Method: GET
+            RequestParameters:
+              - method.request.querystring.EventType:
+                  Required: false
+                  Caching: false
 
-  Get_All_Events_Lambda:
+  TransactionsPost:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: lambdas/Get_All_Events/get
-      Handler: lambda_function.lambda_handler
+      FunctionName: !Sub "TransactionsPost_${ENVIRONMENT}"
+      CodeUri: lambdas/transactions/post
+      Handler: postTransactions.postTransactions
       Runtime: python3.8
+      Policies:
+        - DynamoDBWritePolicy:
+            TableName: !Sub "User_Transactions_${ENVIRONMENT}"
       Environment:
         Variables:
           ENVIRONMENT: !Sub "${ENVIRONMENT}"
       Events:
-        Type: Api
-        Properties:
-          RestApiId: !Ref Event_API_Gateway
-          Path: /events
-        Method: GET
+        PostTransaction:
+          Type: Api
+          Properties:
+            RestApiId: !Ref UserTransactionAPI
+            Path: /api/UserTransactions
+            Method: POST
 
-  DynamoDBTable:
+  EventsDynamoDB:
     Type: AWS::DynamoDB::Table
     Properties:
+      TableName: !Sub "Events_${ENVIRONMENT}"
       AttributeDefinitions:
         - AttributeName: EventID
-          AttributeType: S
-        - AttributeName: EventTitle
-          AttributeType: S
-        - AttributeName: EventLocation
-          AttributeType: S
-        - AttributeName: EventType
-          AttributeType: S
-        - AttributeName: EventPrice
-          AttributeType: S
-        - AttributeName: Img
           AttributeType: S
       KeySchema:
         - AttributeName: EventID
           KeyType: HASH
-      ProvisionedThroughput:
-        ReadCapacityUnits: 5
-        WriteCapacityUnits: 5
+      StreamSpecification:
+        StreamViewType: NEW_IMAGE
+      BillingMode: PAY_PER_REQUEST
+
+  TransactionsDynamoDB:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub "User_Transactions_${ENVIRONMENT}"
+      AttributeDefinitions:
+        - AttributeName: TransactionID
+          AttributeType: S
+      KeySchema:
+        - AttributeName: TransactionID
+          KeyType: HASH
       StreamSpecification:
         StreamViewType: NEW_IMAGE
       BillingMode: PAY_PER_REQUEST
 
   #EventsGet:
-    #Type: AWS::Serverless::Function
+  #Type: AWS::Serverless::Function
 
   #TransactionPost:
-    #Type: AWS::Serverless::Function
+  #Type: AWS::Serverless::Function
 
   #EventDatabase
-    #Type: AWS::Dynamo::Table
-  
+  #Type: AWS::Dynamo::Table
+
   #TransactionDatabase:
-    #Type: AWS::Dynamo::Table
-  
+  #Type: AWS::Dynamo::Table
