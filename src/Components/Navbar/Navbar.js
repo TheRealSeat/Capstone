@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Menu, Segment } from "semantic-ui-react";
+import { Divider, Menu, Segment } from "semantic-ui-react";
 import {  NavLink } from "react-router-dom";
 import CartModal from "../CartModal/CartModal";
 import { useSelector } from "react-redux";
@@ -22,6 +22,8 @@ const Navbar = () => {
             onClick={() => setActiveItem("Home")}
           />
         </NavLink>
+        <Divider vertical>And</Divider>
+
         <NavLink to="/Events">
           <Menu.Item
             name="Events"
@@ -43,13 +45,17 @@ const Navbar = () => {
             onClick={() => setActiveItem("Organizers")}
           />
         </NavLink>
-          <Button style={{backgroundColor:'#576278',marginLeft:'75%',display:'flex'}} onClick={()=>setCartState(true)}>
-          <Badge badgeContent={cart.cartEvents.length} color="secondary">
+        <div className="d-flex" style={{backgroundColor:'#576278',marginLeft:'70%'}}>
+          <Button style={{backgroundColor:'#576278',display:'flex'}} onClick={()=>setCartState(true)}>
+           
+            <Badge badgeContent={cart.cartEvents.length} color="secondary">
               <ShoppingCart />
             </Badge>
-           <p style={{marginLeft:'5px',color:'#c1c9d9'}}>View Cart</p>
+           <p style={{marginLeft:'2px',color:'#c1c9d9'}}>View Cart</p>
+        
           </Button>
-           
+          </div>
+
          
       </Menu>
 

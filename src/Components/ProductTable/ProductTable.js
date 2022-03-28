@@ -2,10 +2,11 @@ import React from "react";
 import EventCatalog from "../EventCatalog/EventCatalog";
 
 const ProductTable = ({ catalog, handleClick}) => {
-  const eventCatalogs = catalog.map((item, index) => (
+  const events  =Object.entries(catalog);
+  const eventCatalogs = events.map((item, index) => (
     <EventCatalog
-      events={item.events}
-      catalogName={item.catalogName}
+      events={item[1]}
+      catalogName={item[0]}
       key={index}
       handleClick={handleClick}
     ></EventCatalog>

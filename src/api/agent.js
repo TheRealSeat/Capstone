@@ -2,7 +2,7 @@ import axios from "axios";
 
 const sleep = () => new Promise((resolve) => setTimeout(resolve, 500));
 //change base url here
-axios.defaults.baseURL = "http://localhost:5000/api/";
+axios.defaults.baseURL = "https://1rys8xrtjj.execute-api.us-east-1.amazonaws.com/";
 axios.defaults.withCredentials = true;
 const responseBody = (response) => response.data;
 
@@ -27,7 +27,7 @@ const requests = {
 
 //We can use this as central data fetching
 const Event = {
-  list: () => requests.get("events"),
+  list: () => requests.get("get_all_events"),
   details: (id) => requests.get(`event/${id}`),
 };
 

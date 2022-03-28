@@ -35,7 +35,7 @@ const CartModal = ({ show, handleClose }) => {
                 </thead>
                 <tbody>
                   {cart.cartEvents?.map((product, index) => (
-                    <tr>
+                    <tr key={index}>
                       <td>{product.catalog}</td>
                       <td>{product.event_title}</td>
                       <td>{product.event_location}</td>
@@ -59,7 +59,7 @@ const CartModal = ({ show, handleClose }) => {
 
               <Typography
                 variant="h4"
-                sx={{ textAlign: "right", marginRight: "10%" }}
+                sx={{ textalign: "right", marginRight: "10%" }}
               >
                 <li>Total: ${cart.cartTotalAmount}</li>
               </Typography>
