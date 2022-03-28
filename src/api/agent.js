@@ -1,15 +1,13 @@
 import axios from "axios";
 
-const sleep = () => new Promise((resolve) => setTimeout(resolve, 500));
 //change base url here
 axios.defaults.baseURL = "https://1rys8xrtjj.execute-api.us-east-1.amazonaws.com/";
 axios.defaults.withCredentials = true;
 const responseBody = (response) => response.data;
-
 //this is for testing for async method
 axios.interceptors.response.use(
   async (response) => {
-    await sleep();
+    
     return response;
   },
   (error) => {
@@ -17,6 +15,7 @@ axios.interceptors.response.use(
     return Promise.reject(error.response);
   }
 );
+
 
 const requests = {
   get: (url) => axios.get(url).then(responseBody),
@@ -29,6 +28,7 @@ const requests = {
 const Event = {
   list: () => requests.get("get_all_events"),
   details: (id) => requests.get(`event/${id}`),
+  create:(values) =>requests.post("create_event",values)
 };
 
 //Add new endpoints to this object

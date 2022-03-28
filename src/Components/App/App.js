@@ -7,6 +7,7 @@ import configureStore from '../../Services/Store/configureStore';
 import { Provider } from 'react-redux';
 import Footer from "../../Components/Footer/Footer";
 import Navbar from '../../Components/Navbar/Navbar';
+import EventForm from '../../Pages/Events/EventForm';
 
 function App() {
     const store = configureStore();
@@ -19,6 +20,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<HomePage />}/>
                     <Route path="/events" element={<Events />} />
+                    <Route path="/createEvent" element={<EventForm />} />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
                 <Footer />
