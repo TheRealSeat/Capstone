@@ -1,15 +1,19 @@
 import axios from "axios";
 
-const sleep = () => new Promise((resolve) => setTimeout(resolve, 500));
 //change base url here
-axios.defaults.baseURL = "http://localhost:5000/api/";
-axios.defaults.withCredentials = true;
+axios.defaults.baseURL = "https://pdtwnb8fu5.execute-api.us-east-1.amazonaws.com/Prod/api/";
+//axios.defaults.withCredentials = true;
+// axios.defaults.headers={
+//   'Access-Control-Allow-Origin': '*',
+//   'Access-Control-Allow-Credentials': true,
+//   'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
+//   "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
+// }
 const responseBody = (response) => response.data;
-
 //this is for testing for async method
 axios.interceptors.response.use(
   async (response) => {
-    await sleep();
+    
     return response;
   },
   (error) => {
@@ -17,6 +21,7 @@ axios.interceptors.response.use(
     return Promise.reject(error.response);
   }
 );
+
 
 const requests = {
   get: (url) => axios.get(url).then(responseBody),
@@ -29,6 +34,7 @@ const requests = {
 const Event = {
   list: () => requests.get("events"),
   details: (id) => requests.get(`event/${id}`),
+  create:(values) =>requests.post("create_event",values),
   listType: (type) => requests.get(`events?type=${type}`),
 };
 
