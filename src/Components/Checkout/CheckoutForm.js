@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import { Button, Header, Segment, Grid } from "semantic-ui-react";
-import { Link } from "react-router-dom";
-
+import { Button, Segment, Grid } from "semantic-ui-react";
+import Modal from "react-bootstrap/Modal";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import MyTextInput from "../../Components/form/MyTextInput";
 import Review from "./Review";
-const CheckoutForm = () => {
+const CheckoutForm = ({show,handleClose}) => {
   // const selectedEvent = useSelector((state) =>
   //   state.event.events.find((i) => i.id === match.params.id)
   // );
@@ -37,15 +36,25 @@ const CheckoutForm = () => {
   }
 
   return (
-    <Segment clearing>
+    <Modal
+    show={show}
+    dialogClassName="modal-content-style"
+    onHide={handleClose}
+    keyboard={false}
+    centered
+  >
+    <Modal.Header closeButton style={{ color: "#bac3d6" }}>
+      <span>Checkout</span>
+    </Modal.Header>
+    <Modal.Body style={{ color: "#bac3d6" }}>
+    <Segment clearing basic>
       <Formik
         initialValues={initialValue}
         validationSchema={validationSchema}
          onSubmit={ (values, { setSubmitting }) =>  handleSubmit(values)}
       >
-        {({ values }) => (
-          <Form className="ui form">
-            <Header content="Checkout" color="Black" />
+        {({ values,isValid }) => (
+          <Form className="ui form" >
             <Grid columns={2}>
               <Grid.Row>
                 <Grid.Column>
@@ -73,21 +82,16 @@ const CheckoutForm = () => {
               floated="right"
               color="brown"
               content="Place order"
-              disabled={isSubmitting}
+              disabled={isSubmitting||!isValid}
               onClick={() => handleSubmit(values)}
             />
-            <Button
-              as={Link}
-              to="/events"
-              type="button"
-              floated="right"
-              content="Cancel"
-              disabled={isSubmitting}
-            />
+           
           </Form>
         )}
       </Formik>
     </Segment>
+    </Modal.Body>
+    </Modal>
   );
 };
 

@@ -6,10 +6,12 @@ import { useSelector } from "react-redux";
 import { Button } from "semantic-ui-react";
 import { Badge } from "@mui/material";
 import { ShoppingCart } from "@mui/icons-material";
+import CheckoutForm from "../Checkout/CheckoutForm";
 
 const Navbar = () => {
   const [activeItem, setActiveItem] = useState("");
   const [showCart, setCartState] = useState(false);
+  const [showCheckout, setCheckout] = useState(false);
   const cart = useSelector((state) => state.cart);
 
   return (
@@ -65,7 +67,8 @@ const Navbar = () => {
          
       </Menu>
 
-      <CartModal show={showCart} handleClose={() => setCartState(false)} />
+      <CartModal show={showCart} handleClose={() => setCartState(false)} setCheckout={setCheckout}/>
+      <CheckoutForm show={showCheckout} handleClose={()=>setCheckout(false)}/>
     </Segment>
   );
 };

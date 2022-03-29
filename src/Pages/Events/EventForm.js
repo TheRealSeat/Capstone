@@ -48,13 +48,13 @@ function EventForm() {
  
 
   return (
-    <Segment clearing>
+    <Segment clearing basic>
       <Formik
         initialValues={initialValue}
         validationSchema={validationSchema}
         onSubmit={ async(values) =>await  handleSubmit(values)}
       >
-        {({ values,isValid}) => (
+        {({ values,isValid,dirty}) => (
          
           <Form className="ui form">
             <Header content="Event Details" color="teal" />
@@ -72,7 +72,7 @@ function EventForm() {
               floated="right"
               positive
               content="Submit"
-              disabled={isSubmitting||!isValid}
+              disabled={isSubmitting||!isValid||!dirty}
               onClick={()=>handleSubmit(values)}
             />
             <Button
