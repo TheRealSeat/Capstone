@@ -1,0 +1,229 @@
+{
+  "events": [
+    {
+      "EventId": {
+        "S": "sne2374r-6483-2934-29o2-p2kj482j1n29"
+      },
+      "EventDetails": {
+        "M": {
+          "Name": {
+            "S": "Kentucky Derby"
+          },
+          "Type": {
+            "S": "Race"
+          },
+          "Dates": {
+            "SS": [
+              "5/1/2022",
+              "5/2/2022",
+              "5/3/2022",
+              "5/4/2022",
+              "5/5/2022",
+              "5/6/2022",
+              "5/7/2022",
+              "5/8/2022",
+              "5/9/2022",
+              "5/10/2022"
+            ]
+          },
+          "AvailableTickets": {
+            "N": "100"
+          },
+          "Venue": {
+            "S": "Churchill Downs"
+          },
+          "Image": {
+            "S": "https://www.google.com/maps/uv?pb=!1s0x88691281343a54f1%3A0x1b3c756e82ea09be!3m1!7e115!4shttps%3A%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipNs-usWm2pD8oShFaFs8kjPposJ91FmZckatrkA%3Dw319-h240-k-no!5schurchill%20downs%20-%20Google%20Search!15sCgIgAQ&imagekey=!1e10!2sAF1QipNs-usWm2pD8oShFaFs8kjPposJ91FmZckatrkA&hl=en&sa=X&ved=2ahUKEwjNtJ2h5tf2AhXDB80KHUtDBLkQoip6BAggEAM#"
+          },
+          "PriceRange": {
+            "NS": [
+              "50",
+              "100"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "EventID": {
+        "S": "a8e0f6eb-a77e-49c9-a3a9-181b1aa54659"
+      },
+      "EventDetails": {
+        "M": {
+          "Name": {
+            "S": "Jack Harlow"
+          },
+          "Type": {
+            "S": "Concert"
+          },
+          "Dates": {
+            "SS": [
+              "6/3/2022"
+            ]
+          },
+          "AvailableTickets": {
+            "N": "1000"
+          },
+          "Venue": {
+            "S": "The Louisville Palace"
+          },
+          "Image": {
+            "S": "https: //images.fineartamerica.com/images/artworkimages/mediumlarge/3/jack-harlow-album-cover-art-print-pdart.jpg"
+          },
+          "PriceRange": {
+            "NS": [
+              "60",
+              "250"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "EventID": {
+        "S": "ed13a3a6-f3f8-4ced-9dfa-87c8f3ad22b1"
+      },
+      "EventDetails": {
+        "M": {
+          "Name": {
+            "S": "Hamlet"
+          },
+          "Type": {
+            "S": "Arts-Theater"
+          },
+          "Dates": {
+            "SS": [
+              "9/23/2022",
+              "9/24/2022",
+              "9/25/2022",
+              "9/30/2022",
+              "10/1/2022",
+              "10/2/2022"
+            ]
+          },
+          "AvailableTickets": {
+            "N": "300"
+          },
+          "Venue": {
+            "S": "The Louisville Theater"
+          },
+          "Image": {
+            "S": "https://images.pexels.com/photos/1916821/pexels-photo-1916821.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+          },
+          "PriceRange": {
+            "NS": [
+              "25",
+              "100"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "EventID": {
+        "S": "34ca71bc-7728-4410-a768-d223b9ddb782"
+      },
+      "EventDetails": {
+        "M": {
+          "Name": {
+            "S": "Kanye West"
+          },
+          "Type": {
+            "S": "Concerts"
+          },
+          "Dates": {
+            "SS": [
+              "3/29/2022"
+            ]
+          },
+          "AvailableTickets": {
+            "N": "500"
+          },
+          "Venue": {
+            "S": "KFC Yum! Center"
+          },
+          "Image": {
+            "S": "https://images.pexels.com/photos/167636/pexels-photo-167636.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+          },
+          "PriceRange": {
+            "NS": [
+              "80",
+              "350"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "EventID": {
+        "S": "adde1293-2ba6-4410-b605-e5ae921f5bfd"
+      },
+      "EventDetails": {
+        "M": {
+          "Name": {
+            "S": "Mitski"
+          },
+          "Type": {
+            "S": "Comedy"
+          },
+          "Dates": {
+            "SS": [
+              "5/12/2022",
+              "5/14/2022"
+            ]
+          },
+          "AvailableTickets": {
+            "N": "100"
+          },
+          "Venue": {
+            "S": "The Louisville Palace"
+          },
+          "Image": {
+            "S": "https://images.pexels.com/photos/1916821/pexels-photo-1916821.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+          },
+          "PriceRange": {
+            "NS": [
+              "30",
+              "75"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "EventID": {
+        "S": "2b6e7250-2565-4911-85a6-1adb47479609"
+      },
+      "EventDetails": {
+        "M": {
+          "Name": {
+            "S": "The Band"
+          },
+          "Type": {
+            "S": "Sports"
+          },
+          "Dates": {
+            "SS": [
+              "12/20/2022"
+            ]
+          },
+          "AvailableTickets": {
+            "N": "450"
+          },
+          "Venue": {
+            "S": "The Louisville Palace"
+          },
+          "Image": {
+            "S": "https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+          },
+          "PriceRange": {
+            "NS": [
+              "49",
+              "88"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import EventCard from "../EventCard/EventCard";
 import { CardGroup } from "react-bootstrap";
-import "./EventCatalog.scss"
+import "./EventCatalog.scss";
 
 const EventCatalog = ({ events, catalogName, handleClick }) => {
   const eventCards = events.map((events, index) => (
@@ -15,7 +15,6 @@ const EventCatalog = ({ events, catalogName, handleClick }) => {
       handleClick={handleClick}
     ></EventCard>
   ));
-
   return (
     <div className="eventcatalog">
       <h1 className="title">{catalogName}</h1>

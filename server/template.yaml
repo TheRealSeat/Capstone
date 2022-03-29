@@ -1,0 +1,112 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  TRC Serverless Template
+
+Globals:
+  Function:
+    Timeout: 15
+
+Parameters:
+  ENVIRONMENT:
+    Description: "Required. Enviroment that will be deployed in"
+    Type: "String"
+
+Resources:
+  EventAPI:
+    Type: AWS::Serverless::Api
+    Properties:
+      Name: !Sub "EventAPI_${ENVIRONMENT}"
+      StageName: Prod
+
+  UserTransactionAPI:
+    Type: AWS::Serverless::Api
+    Properties:
+      Name: !Sub "UserTransactionAPI_${ENVIRONMENT}"
+      StageName: Prod
+
+  EventsGet:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "EventsGet_${ENVIRONMENT}"
+      CodeUri: lambdas/events/get
+      Handler: getEvents.getEvents
+      Runtime: python3.8
+      Policies:
+        - DynamoDBReadPolicy:
+            TableName: !Sub "Events_${ENVIRONMENT}"
+      Environment:
+        Variables:
+          ENVIRONMENT: !Sub "${ENVIRONMENT}"
+      Events:
+        GetEvents:
+          Type: Api
+          Properties:
+            RestApiId: !Ref EventAPI
+            Path: /api/events
+            Method: GET
+            RequestParameters:
+              - method.request.querystring.EventType:
+                  Required: false
+                  Caching: false
+
+  TransactionsPost:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "TransactionsPost_${ENVIRONMENT}"
+      CodeUri: lambdas/transactions/post
+      Handler: postTransactions.postTransactions
+      Runtime: python3.8
+      Policies:
+        - DynamoDBWritePolicy:
+            TableName: !Sub "User_Transactions_${ENVIRONMENT}"
+      Environment:
+        Variables:
+          ENVIRONMENT: !Sub "${ENVIRONMENT}"
+      Events:
+        PostTransaction:
+          Type: Api
+          Properties:
+            RestApiId: !Ref UserTransactionAPI
+            Path: /api/UserTransactions
+            Method: POST
+
+  EventsDynamoDB:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub "Events_${ENVIRONMENT}"
+      AttributeDefinitions:
+        - AttributeName: EventID
+          AttributeType: S
+      KeySchema:
+        - AttributeName: EventID
+          KeyType: HASH
+      StreamSpecification:
+        StreamViewType: NEW_IMAGE
+      BillingMode: PAY_PER_REQUEST
+
+  TransactionsDynamoDB:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub "User_Transactions_${ENVIRONMENT}"
+      AttributeDefinitions:
+        - AttributeName: TransactionID
+          AttributeType: S
+      KeySchema:
+        - AttributeName: TransactionID
+          KeyType: HASH
+      StreamSpecification:
+        StreamViewType: NEW_IMAGE
+      BillingMode: PAY_PER_REQUEST
+
+  #EventsGet:
+  #Type: AWS::Serverless::Function
+
+  #TransactionPost:
+  #Type: AWS::Serverless::Function
+
+  #EventDatabase
+  #Type: AWS::Dynamo::Table
+
+  #TransactionDatabase:
+  #Type: AWS::Dynamo::Table

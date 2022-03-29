@@ -34,7 +34,8 @@ const requests = {
 const Event = {
   list: () => requests.get("events"),
   details: (id) => requests.get(`event/${id}`),
-  create:(values) =>requests.post("create_event",values)
+  create:(values) =>requests.post("create_event",values),
+  listType: (type) => requests.get(`events?type=${type}`),
 };
 
 //Add new endpoints to this object
