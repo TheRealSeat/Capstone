@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import EventCard from "../EventCard/EventCard";
 import { CardGroup } from "react-bootstrap";
 import "./EventCatalog.scss";
