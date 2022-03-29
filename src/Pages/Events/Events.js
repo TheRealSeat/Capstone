@@ -5,7 +5,7 @@ import ProductTable from "../../Components/ProductTable/ProductTable";
 import Hero from "../../Components/Hero/Hero";
 import { useDispatch,useSelector } from "react-redux";
 import { addToCart } from "../../Services/Slices/cart";
-import agent from "../../api/agent";
+import agent from "../../Services/Api/agent";
 import {AddEvents} from '../../Services/Slices/event'
 import LoadingComponent from '../../Components/Loading/LoadingComponent'
 function Events() {

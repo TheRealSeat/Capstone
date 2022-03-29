@@ -6,7 +6,7 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import uuid from 'react-uuid'
 import MyTextInput from "../../Components/form/MyTextInput"
-import agent from "../../api/agent";
+import agent from "../../Services/Api/agent";
 function EventForm() {
   // const selectedEvent = useSelector((state) =>
   //   state.event.events.find((i) => i.id === match.params.id)
