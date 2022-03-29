@@ -23,7 +23,7 @@ const ConfirmModal = ({show, handleClose, props}) => {
             <Col xs={10} md={6}>
              <Image src={props.image}/>
             </Col>
-            <Col xs={8} md={6} style={{textalign:'center',color:'#bac3d6'}}>
+            <Col xs={8} md={6} style={{textAlign:'center',color:'#bac3d6'}}>
               <Row >
               <Typography variant="h3">{props.event_title}</Typography>
               </Row>

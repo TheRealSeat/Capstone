@@ -6,10 +6,7 @@ import * as Yup from "yup";
 import MyTextInput from "../../Components/form/MyTextInput";
 import Review from "./Review";
 const CheckoutForm = ({show,handleClose}) => {
-  // const selectedEvent = useSelector((state) =>
-  //   state.event.events.find((i) => i.id === match.params.id)
-  // );
-
+ 
   const initialValue = {
     cardName: "",
     cardNumber: "",
