@@ -103,6 +103,27 @@ Resources:
                   Required: false
                   Caching: false
 
+  EventsPost:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "EventsPost_${ENVIRONMENT}"
+      CodeUri: lambdas/events/post
+      Handler: postEvents.postEvents
+      Runtime: python3.8
+      Policies:
+        - DynamoDBWritePolicy:
+            TableName: !Sub "Events_${ENVIRONMENT}"
+      Environment:
+        Variables:
+          ENVIRONMENT: !Sub "${ENVIRONMENT}"
+      Events:
+        GetEvents:
+          Type: Api
+          Properties:
+            RestApiId: !Ref EventAPI
+            Path: /api/events
+            Method: POST
+
   TransactionsPost:
     Type: AWS::Serverless::Function
     Properties:
