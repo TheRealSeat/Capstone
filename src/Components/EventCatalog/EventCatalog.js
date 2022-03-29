@@ -6,11 +6,11 @@ import "./EventCatalog.scss"
 const EventCatalog = ({ events, catalogName, handleClick }) => {
   const eventCards = events.map((events, index) => (
     <EventCard
-      img={events.img.S}
-      title={events.EventTitle.S}
-      location={events.EventLocation.S}
+      img={events.EventImg}
+      title={events.EventTitle}
+      location={events.EventLocation}
       catalog={catalogName}
-      pricesFrom={events.EventPrice.N}
+      pricesFrom={events.EventPrice}
       key={index}
       handleClick={handleClick}
     ></EventCard>

@@ -5,8 +5,10 @@ import { Typography } from "@mui/material";
 import { removeFromCart } from "../../Services/Slices/cart";
 import { Button, Divider, Icon } from "semantic-ui-react";
 import { Table } from "react-bootstrap";
-const CartModal = ({ show, handleClose }) => {
+import { useNavigate } from "react-router-dom";
+const CartModal = ({ show, handleClose,setCheckout }) => {
   const cart = useSelector((state) => state.cart);
+  const history = useNavigate();
   const dispatch = useDispatch();
   return (
     <>
@@ -72,7 +74,12 @@ const CartModal = ({ show, handleClose }) => {
           <Button onClick={() => handleClose(false)} color="red">
             Close
           </Button>
-          <Button onClick={() => handleClose(true)} color="green">
+          <Button onClick={() => {
+            history('/checkout')
+            handleClose(true)
+            }} color="green"
+            disabled={cart.cartEvents.length === 0 }
+            >
             Checkout
           </Button>
         </Modal.Footer>

@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { Button, Header, Segment } from "semantic-ui-react";
-import { Link,useNavigate,useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import uuid from 'react-uuid'
-import LoadingComponent from "../../Components/Loading/LoadingComponent";
 import MyTextInput from "../../Components/form/MyTextInput"
 import agent from "../../api/agent";
 function EventForm() {
@@ -13,7 +12,7 @@ function EventForm() {
   //   state.event.events.find((i) => i.id === match.params.id)
   // );
 
-  let history = useNavigate();
+  // let history = useNavigate();
   
   const initialValue =  {
     EventID:uuid(),
@@ -31,21 +30,19 @@ function EventForm() {
     img: Yup.string().required("You must provide a image URL"),
   });
 
-  function handleSubmit(values)
+  async function handleSubmit(values)
   {
-    try {
+    
       setIsSubmitting(true);
       console.log(values);
 
-      agent.Event.create(values);
+      await agent.Event.create(values)
+            .then(value =>console.log(value))
+            .catch(error=>{console.log(error)})
+            .finally(()=>setIsSubmitting(false));
 
-      history('/events');
-    } catch (error) {
-      console.log(error)
-    }
-    finally{
-      setIsSubmitting(false);
-    }
+      //history('/events');
+   
 
   }
  
@@ -55,9 +52,9 @@ function EventForm() {
       <Formik
         initialValues={initialValue}
         validationSchema={validationSchema}
-        // onSubmit={ (values, { setSubmitting }) =>  handleSubmit(values)}
+        onSubmit={ async(values) =>await  handleSubmit(values)}
       >
-        {({ values}) => (
+        {({ values,isValid}) => (
          
           <Form className="ui form">
             <Header content="Event Details" color="teal" />
@@ -75,7 +72,7 @@ function EventForm() {
               floated="right"
               positive
               content="Submit"
-              disabled={isSubmitting}
+              disabled={isSubmitting||!isValid}
               onClick={()=>handleSubmit(values)}
             />
             <Button

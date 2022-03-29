@@ -10,7 +10,7 @@ const events = createSlice({
   reducers: {
     AddEvents(state, { payload, type }) {
       let groupBy = payload.reduce((r, a) => {
-        r[a.EventType.S] = [...(r[a.EventType.S] || []), a];
+        r[a.EventType] = [...(r[a.EventType] || []), a];
         return r;
       }, {});
 

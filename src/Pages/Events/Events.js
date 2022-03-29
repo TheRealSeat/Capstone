@@ -2,7 +2,6 @@ import React, { useState,useEffect } from "react";
 import "./Events.scss";
 import ConfirmModal from "../../Components/ConfirmModal/ConfirmModal";
 import ProductTable from "../../Components/ProductTable/ProductTable";
-import { catalogs } from "../../Data/catalogsData";
 import Hero from "../../Components/Hero/Hero";
 import { useDispatch,useSelector } from "react-redux";
 import { addToCart } from "../../Services/Slices/cart";
@@ -24,6 +23,7 @@ function Events() {
 
     agent.Event.list()
         .then(values => {
+          console.log(values)
             dispatch(AddEvents(values));
         })
         .catch(error=>console.log(error))

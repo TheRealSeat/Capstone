@@ -3,6 +3,7 @@ import EventCatalog from "../EventCatalog/EventCatalog";
 
 const ProductTable = ({ catalog, handleClick}) => {
   const events  =Object.entries(catalog);
+  console.log(events)
   const eventCatalogs = events.map((item, index) => (
     <EventCatalog
       events={item[1]}
