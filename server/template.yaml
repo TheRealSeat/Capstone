@@ -11,8 +11,61 @@ Parameters:
   ENVIRONMENT:
     Description: "Required. Enviroment that will be deployed in"
     Type: "String"
+  CloudFrontPriceClass:
+    Type: String
+    Description: "The price class for CloudFront distribution."
+    Default: "PriceClass_100"
+    AllowedValues:
+      - PriceClass_100
+      - PriceClass_200
+      - PriceClass_All
+  AcmCertificateArn:
+    Type: String
+    Description: "The certificate arn for the domain name provided"
+  DomainName:
+    Type: String
+    Description: "domain name of the website"
 
 Resources:
+  CloudFrontDistribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Enabled: 'true'
+        DefaultRootObject: index.html
+        HttpVersion: http2
+        # Redirecting 404 errors to index.html
+        CustomErrorResponses:
+          - ErrorCachingMinTTL: 86400
+            ErrorCode: 404
+            ResponseCode: !If [IsStaticMode, 404, 200]
+            ResponsePagePath: index.html
+        # Making the origin of this distribution to the S3 bucket of the person pushing
+        Origins:
+          - DomainName: !Sub "${ENVIRONMENT}.s3.us-east-1.amazonaws.com"
+            Id: bucketOrigin
+            S3OriginConfig:
+              OriginAccessIdentity: !Sub origin-access-identity/cloudfront/${OriginAccessIdentity}
+        DefaultCacheBehavior:
+          Compress: 'true'
+          AllowedMethods:
+            - GET
+            - HEAD
+            - OPTIONS
+            - POST
+          TargetOriginId: bucketOrigin
+          ForwardedValues:
+            QueryString: 'false'
+            Cookies:
+              Forward: none
+          ViewerProtocolPolicy: redirect-to-https
+        PriceClass: !Ref CloudFrontPriceClass
+        Aliases:
+          - !Ref DomainName
+        ViewerCertificate:
+          AcmCertificateArn: !Ref AcmCertificateArn
+          SslSupportMethod: sni-only
+
   EventAPI:
     Type: AWS::Serverless::Api
     Properties:
@@ -98,15 +151,3 @@ Resources:
       StreamSpecification:
         StreamViewType: NEW_IMAGE
       BillingMode: PAY_PER_REQUEST
-
-  #EventsGet:
-  #Type: AWS::Serverless::Function
-
-  #TransactionPost:
-  #Type: AWS::Serverless::Function
-
-  #EventDatabase
-  #Type: AWS::Dynamo::Table
-
-  #TransactionDatabase:
-  #Type: AWS::Dynamo::Table

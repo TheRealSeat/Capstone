@@ -2,6 +2,7 @@ import './App.scss';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import HomePage from '../../Pages/HomePage/HomePage';
 import Events from '../../Pages/Events/Events';
+import Disclaimer from '../../Pages/Disclaimer/Disclaimer';
 import NotFound from '../../Pages/NotFound/NotFound';
 import configureStore from '../../Services/Store/configureStore';
 import { Provider } from 'react-redux';
@@ -19,6 +20,7 @@ function App() {
                 <Navbar />
                 <Routes>
                     <Route path="/" element={<HomePage />}/>
+                    <Route path="/disclaimer" element={<Disclaimer />}/>
                     <Route path="/events" element={<Events />} />
                     <Route path="/createEvent" element={<EventForm />} />
                     <Route path="*" element={<NotFound />} />
