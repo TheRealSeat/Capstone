@@ -27,25 +27,49 @@ Parameters:
     Description: "domain name of the website"
 
 Resources:
+  FullDynamoDBAccessRoll:
+    Type: AWS::IAM::Role
+    Properties:
+      ManagedPolicyArns:
+        - 'arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess'
+        - 'arn:aws:iam::aws:policy/AmazonAPIGatewayInvokeFullAccess'
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - 'lambda.amazonaws.com'
+              Action:
+                - 'sts:AssumeRole'
+
   CloudFrontDistribution:
     Type: AWS::CloudFront::Distribution
+    DeletionPolicy: Retain
     Properties:
       DistributionConfig:
+        # Making the origin of this distribution to the S3 bucket of the person pushing
+        Origins:
+          - Id: S3Origin
+            DomainName: !Sub "${DomainName}.s3.amazonaws.com"
+            CustomOriginConfig:
+              OriginProtocolPolicy: http-only
+        Aliases:
+          - !Ref DomainName
         Enabled: 'true'
-        DefaultRootObject: index.html
         HttpVersion: http2
+        DefaultRootObject: index.html
+        PriceClass: PriceClass_100
+        ViewerCertificate:
+          AcmCertificateArn: !Sub "${AcmCertificateArn}"
+          MinimumProtocolVersion: 'TLSv1.2_2019'
+          SslSupportMethod: 'sni-only'
         # Redirecting 404 errors to index.html
         CustomErrorResponses:
           - ErrorCachingMinTTL: 86400
             ErrorCode: 404
-            ResponseCode: !If [IsStaticMode, 404, 200]
-            ResponsePagePath: index.html
-        # Making the origin of this distribution to the S3 bucket of the person pushing
-        Origins:
-          - DomainName: !Sub "${ENVIRONMENT}.s3.us-east-1.amazonaws.com"
-            Id: bucketOrigin
-            S3OriginConfig:
-              OriginAccessIdentity: !Sub origin-access-identity/cloudfront/${OriginAccessIdentity}
+            ResponseCode: 200
+            ResponsePagePath: '/index.html'
         DefaultCacheBehavior:
           Compress: 'true'
           AllowedMethods:
@@ -59,28 +83,31 @@ Resources:
             Cookies:
               Forward: none
           ViewerProtocolPolicy: redirect-to-https
-        PriceClass: !Ref CloudFrontPriceClass
-        Aliases:
-          - !Ref DomainName
-        ViewerCertificate:
-          AcmCertificateArn: !Ref AcmCertificateArn
-          SslSupportMethod: sni-only
 
   EventAPI:
     Type: AWS::Serverless::Api
     Properties:
       Name: !Sub "EventAPI_${ENVIRONMENT}"
       StageName: Prod
+      Cors:
+        AllowMethods: "'*'"
+        AllowHeaders: "'*'"
+        AllowOrigin: "'*'"
 
   UserTransactionAPI:
     Type: AWS::Serverless::Api
     Properties:
       Name: !Sub "UserTransactionAPI_${ENVIRONMENT}"
       StageName: Prod
+      Cors:
+        AllowMethods: "'*'"
+        AllowHeaders: "'*'"
+        AllowOrigin: "'*'"
 
   EventsGet:
     Type: AWS::Serverless::Function
     Properties:
+      Role: !GetAtt FullDynamoDBAccessRoll
       FunctionName: !Sub "EventsGet_${ENVIRONMENT}"
       CodeUri: lambdas/events/get
       Handler: getEvents.getEvents
@@ -106,6 +133,7 @@ Resources:
   TransactionsPost:
     Type: AWS::Serverless::Function
     Properties:
+      Role: !GetAtt FullDynamoDBAccessRoll
       FunctionName: !Sub "TransactionsPost_${ENVIRONMENT}"
       CodeUri: lambdas/transactions/post
       Handler: postTransactions.postTransactions
