@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {  } from "react";
 import { Button, Segment, Grid } from "semantic-ui-react";
 import Modal from "react-bootstrap/Modal";
 import { Formik, Form } from "formik";
@@ -28,7 +28,7 @@ const CARD_OPTIONS = {
 	}
 }
 const CheckoutForm = ({show,handleClose}) => {
-  const [Success,setSuccess] = useState(false);
+  // const [Success,setSuccess] = useState(false);
   const stripe = useStripe();
   const elements = useElements();
   const cart = useSelector(state=>state.cart);
@@ -37,7 +37,6 @@ const CheckoutForm = ({show,handleClose}) => {
    LastName:'',
    Email:''
   };
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const validationSchema = Yup.object({
     FirstName: Yup.string().required("You must enter your first name"),
     LastName: Yup.string().required("You must enter your last name"),
@@ -65,7 +64,7 @@ const CheckoutForm = ({show,handleClose}) => {
 
         if(response.data.success){
           console.log("Successful payment")
-          setSuccess(true);
+          // setSuccess(true);
         }
       } catch (error) {
         console.log(error)
@@ -93,7 +92,7 @@ const CheckoutForm = ({show,handleClose}) => {
          validationSchema={validationSchema}
 
       >
-        {({isValid }) => (
+        {({isValid,isSubmitting }) => (
           <Form className="ui form" >
             <Grid columns={1}>
             <Grid.Row>
