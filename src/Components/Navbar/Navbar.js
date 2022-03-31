@@ -6,7 +6,6 @@ import { useSelector } from "react-redux";
 import { Button } from "semantic-ui-react";
 import { Badge } from "@mui/material";
 import { ShoppingCart } from "@mui/icons-material";
-import CheckoutForm from "../Checkout/CheckoutForm";
 import CheckoutWrapper from "../Checkout/CheckoutWrapper";
 
 const Navbar = () => {
