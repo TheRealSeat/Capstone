@@ -27,22 +27,6 @@ Parameters:
     Description: "domain name of the website"
 
 Resources:
-  FullDynamoDBAccessRoll:
-    Type: AWS::IAM::Role
-    Properties:
-      ManagedPolicyArns:
-        - 'arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess'
-        - 'arn:aws:iam::aws:policy/AmazonAPIGatewayInvokeFullAccess'
-      AssumeRolePolicyDocument:
-        Version: '2012-10-17'
-        Statement:
-          - Effect: Allow
-            Principal:
-              Service:
-                - 'lambda.amazonaws.com'
-              Action:
-                - 'sts:AssumeRole'
-
   CloudFrontDistribution:
     Type: AWS::CloudFront::Distribution
     DeletionPolicy: Retain
@@ -50,18 +34,18 @@ Resources:
       DistributionConfig:
         # Making the origin of this distribution to the S3 bucket of the person pushing
         Origins:
-          - Id: S3Origin
-            DomainName: !Sub "${DomainName}.s3.amazonaws.com"
-            CustomOriginConfig:
-              OriginProtocolPolicy: http-only
-        Aliases:
-          - !Ref DomainName
+        - Id: S3Origin
+          DomainName: "steven.therealcapstone.com.s3.amazonaws.com"
+          CustomOriginConfig:
+            OriginProtocolPolicy: http-only
         Enabled: 'true'
+        Aliases:
+        - "steven.therealcapstone.com"
         HttpVersion: http2
         DefaultRootObject: index.html
         PriceClass: PriceClass_100
         ViewerCertificate:
-          AcmCertificateArn: !Sub "${AcmCertificateArn}"
+          AcmCertificateArn: "arn:aws:acm:us-east-1:415756122454:certificate/e1ae857b-b154-4df7-a805-059ed4dd78b3"
           MinimumProtocolVersion: 'TLSv1.2_2019'
           SslSupportMethod: 'sni-only'
         # Redirecting 404 errors to index.html
@@ -73,11 +57,14 @@ Resources:
         DefaultCacheBehavior:
           Compress: 'true'
           AllowedMethods:
-            - GET
-            - HEAD
-            - OPTIONS
-            - POST
-          TargetOriginId: bucketOrigin
+          - HEAD
+          - DELETE
+          - POST
+          - GET
+          - OPTIONS
+          - PUT
+          - PATCH
+          TargetOriginId: S3Origin
           ForwardedValues:
             QueryString: 'false'
             Cookies:
@@ -107,12 +94,12 @@ Resources:
   EventsGet:
     Type: AWS::Serverless::Function
     Properties:
-      Role: !GetAtt FullDynamoDBAccessRoll
       FunctionName: !Sub "EventsGet_${ENVIRONMENT}"
       CodeUri: lambdas/events/get
       Handler: getEvents.getEvents
       Runtime: python3.8
       Policies:
+        - AmazonDynamoDBFullAccess
         - DynamoDBReadPolicy:
             TableName: !Sub "Events_${ENVIRONMENT}"
       Environment:
@@ -133,12 +120,12 @@ Resources:
   TransactionsPost:
     Type: AWS::Serverless::Function
     Properties:
-      Role: !GetAtt FullDynamoDBAccessRoll
       FunctionName: !Sub "TransactionsPost_${ENVIRONMENT}"
       CodeUri: lambdas/transactions/post
       Handler: postTransactions.postTransactions
       Runtime: python3.8
       Policies:
+        - AmazonDynamoDBFullAccess
         - DynamoDBWritePolicy:
             TableName: !Sub "User_Transactions_${ENVIRONMENT}"
       Environment:
