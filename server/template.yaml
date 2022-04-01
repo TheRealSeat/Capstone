@@ -11,14 +11,6 @@ Parameters:
   ENVIRONMENT:
     Description: "Required. Enviroment that will be deployed in"
     Type: "String"
-  CloudFrontPriceClass:
-    Type: String
-    Description: "The price class for CloudFront distribution."
-    Default: "PriceClass_100"
-    AllowedValues:
-      - PriceClass_100
-      - PriceClass_200
-      - PriceClass_All
   AcmCertificateArn:
     Type: String
     Description: "The certificate arn for the domain name provided"
@@ -35,12 +27,12 @@ Resources:
         # Making the origin of this distribution to the S3 bucket of the person pushing
         Origins:
         - Id: S3Origin
-          DomainName: "steven.therealcapstone.com.s3.amazonaws.com"
+          DomainName: !Ref "${DomainName}.therealcapstone.com.s3.amazonaws.com"
           CustomOriginConfig:
             OriginProtocolPolicy: http-only
         Enabled: 'true'
         Aliases:
-        - "steven.therealcapstone.com"
+        - !Ref "${DomainName}.therealcapstone.com"
         HttpVersion: http2
         DefaultRootObject: index.html
         PriceClass: PriceClass_100
