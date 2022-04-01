@@ -11,10 +11,10 @@ Parameters:
   ENVIRONMENT:
     Description: "Required. Enviroment that will be deployed in"
     Type: "String"
-  AcmCertificateArn:
-    Type: String
-    Description: "The certificate arn for the domain name provided"
-  DomainName:
+  # ACMCERTIFICATEARN:
+  #   Type: String
+  #   Description: "The certificate arn for the domain name provided"
+  DOMAINNAME:
     Type: String
     Description: "domain name of the website"
 
@@ -27,12 +27,12 @@ Resources:
         # Making the origin of this distribution to the S3 bucket of the person pushing
         Origins:
         - Id: S3Origin
-          DomainName: !Ref "${DomainName}.therealcapstone.com.s3.amazonaws.com"
+          DomainName: !Sub "${DOMAINNAME}.therealcapstone.com.s3.amazonaws.com"
           CustomOriginConfig:
             OriginProtocolPolicy: http-only
         Enabled: 'true'
         Aliases:
-        - !Ref "${DomainName}.therealcapstone.com"
+        - !Sub "${DOMAINNAME}.therealcapstone.com"
         HttpVersion: http2
         DefaultRootObject: index.html
         PriceClass: PriceClass_100
