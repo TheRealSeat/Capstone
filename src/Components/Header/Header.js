@@ -6,12 +6,12 @@ function Header() {
         <div className="Header">
             <Navbar />
             <h1 className='Header-container'>
-                <div className="orange_large">TheRealSeat</div><div className="white_large">&nbsp;Capstone Project</div>
+                <div className="orange_large">TheRealCapstone</div><div className="white_large">&nbsp;Capstone Project</div>
             </h1>
             <span className="Project-summary-container">
                 <p className="Project-summary">
                     Summary of proposed project:
-                    TheRealSeat is an event ticketing platform based in Louisville, KY. Our project proposal is to build an event
+                    TheRealCapstone is an event ticketing platform based in Louisville, KY. Our project proposal is to build an event
                     recommendation page which will show customers events that are relevant based on an algorithm. The project is not only
                     dependent on the output but also how the project is built. We want the students to execute an AWS serverless
                     deployment with corresponding backend. If students want to stretch and time allows there is the option to create the
