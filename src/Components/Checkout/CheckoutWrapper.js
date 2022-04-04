@@ -4,8 +4,9 @@ import React from 'react'
 import CheckoutForm from './CheckoutForm'
 
 
-const stripePromise = loadStripe('pk_test_51KiQWrG3YVsmrIIr5k92CvnYtKPPlrd6AOqIs4siioK8RRCXzsnnIUoCbHeZcDBgClZPKVFSZsxuRUEyScxYct1a00h1ZC25da');
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY);
 const CheckoutWrapper = ({show,handleClose}) => {
+
   return (
     <Elements stripe={stripePromise}>
         <CheckoutForm show={show} handleClose={handleClose}/>
