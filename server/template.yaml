@@ -11,13 +11,77 @@ Parameters:
   ENVIRONMENT:
     Description: "Required. Enviroment that will be deployed in"
     Type: "String"
+  # ACMCERTIFICATEARN:
+  #   Type: String
+  #   Description: "The certificate arn for the domain name provided"
+  DOMAINNAME:
+    Type: String
+    Description: "domain name of the website"
 
 Resources:
+  CloudFrontDistribution:
+    Type: AWS::CloudFront::Distribution
+    DeletionPolicy: Retain
+    Properties:
+      DistributionConfig:
+        # Making the origin of this distribution to the S3 bucket of the person pushing
+        Origins:
+        - Id: S3Origin
+          DomainName: !Sub "${DOMAINNAME}.therealcapstone.com.s3.amazonaws.com"
+          CustomOriginConfig:
+            OriginProtocolPolicy: http-only
+        Enabled: 'true'
+        Aliases:
+        - !Sub "${DOMAINNAME}.therealcapstone.com"
+        HttpVersion: http2
+        DefaultRootObject: index.html
+        PriceClass: PriceClass_100
+        ViewerCertificate:
+          AcmCertificateArn: "arn:aws:acm:us-east-1:415756122454:certificate/e1ae857b-b154-4df7-a805-059ed4dd78b3"
+          MinimumProtocolVersion: 'TLSv1.2_2019'
+          SslSupportMethod: 'sni-only'
+        # Redirecting 404 errors to index.html
+        CustomErrorResponses:
+          - ErrorCachingMinTTL: 86400
+            ErrorCode: 404
+            ResponseCode: 200
+            ResponsePagePath: '/index.html'
+        DefaultCacheBehavior:
+          Compress: 'true'
+          AllowedMethods:
+          - HEAD
+          - DELETE
+          - POST
+          - GET
+          - OPTIONS
+          - PUT
+          - PATCH
+          TargetOriginId: S3Origin
+          ForwardedValues:
+            QueryString: 'false'
+            Cookies:
+              Forward: none
+          ViewerProtocolPolicy: redirect-to-https
+
   EventAPI:
     Type: AWS::Serverless::Api
     Properties:
       Name: !Sub "EventAPI_${ENVIRONMENT}"
       StageName: Prod
+      Cors:
+        AllowMethods: "'*'"
+        AllowHeaders: "'*'"
+        AllowOrigin: "'*'"
+
+  UserTransactionAPI:
+    Type: AWS::Serverless::Api
+    Properties:
+      Name: !Sub "UserTransactionAPI_${ENVIRONMENT}"
+      StageName: Prod
+      Cors:
+        AllowMethods: "'*'"
+        AllowHeaders: "'*'"
+        AllowOrigin: "'*'"
 
   EventsGet:
     Type: AWS::Serverless::Function
@@ -27,6 +91,7 @@ Resources:
       Handler: getEvents.getEvents
       Runtime: python3.8
       Policies:
+        - AmazonDynamoDBFullAccess
         - DynamoDBReadPolicy:
             TableName: !Sub "Events_${ENVIRONMENT}"
       Environment:
@@ -39,6 +104,53 @@ Resources:
             RestApiId: !Ref EventAPI
             Path: /api/events
             Method: GET
+            RequestParameters:
+              - method.request.querystring.EventType:
+                  Required: false
+                  Caching: false
+
+  EventsPost:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "EventsPost_${ENVIRONMENT}"
+      CodeUri: lambdas/events/post
+      Handler: postEvents.postEvents
+      Runtime: python3.8
+      Policies:
+        - DynamoDBWritePolicy:
+            TableName: !Sub "Events_${ENVIRONMENT}"
+      Environment:
+        Variables:
+          ENVIRONMENT: !Sub "${ENVIRONMENT}"
+      Events:
+        GetEvents:
+          Type: Api
+          Properties:
+            RestApiId: !Ref EventAPI
+            Path: /api/events
+            Method: POST
+
+  TransactionsPost:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "TransactionsPost_${ENVIRONMENT}"
+      CodeUri: lambdas/transactions/post
+      Handler: postTransactions.postTransactions
+      Runtime: python3.8
+      Policies:
+        - AmazonDynamoDBFullAccess
+        - DynamoDBWritePolicy:
+            TableName: !Sub "User_Transactions_${ENVIRONMENT}"
+      Environment:
+        Variables:
+          ENVIRONMENT: !Sub "${ENVIRONMENT}"
+      Events:
+        PostTransaction:
+          Type: Api
+          Properties:
+            RestApiId: !Ref UserTransactionAPI
+            Path: /api/UserTransactions
+            Method: POST
 
   EventsDynamoDB:
     Type: AWS::DynamoDB::Table
@@ -54,28 +166,16 @@ Resources:
         StreamViewType: NEW_IMAGE
       BillingMode: PAY_PER_REQUEST
 
-  TransactionDynamoDB:
+  TransactionsDynamoDB:
     Type: AWS::DynamoDB::Table
     Properties:
-      TableName: !Sub "User_Transactions${ENVIRONMENT}"
+      TableName: !Sub "User_Transactions_${ENVIRONMENT}"
       AttributeDefinitions:
-        - AttributeName: EventID
+        - AttributeName: TransactionID
           AttributeType: S
       KeySchema:
-        - AttributeName: EventID
+        - AttributeName: TransactionID
           KeyType: HASH
       StreamSpecification:
         StreamViewType: NEW_IMAGE
       BillingMode: PAY_PER_REQUEST
-
-  #EventsGet:
-  #Type: AWS::Serverless::Function
-
-  #TransactionPost:
-  #Type: AWS::Serverless::Function
-
-  #EventDatabase
-  #Type: AWS::Dynamo::Table
-
-  #TransactionDatabase:
-  #Type: AWS::Dynamo::Table

@@ -1,14 +1,12 @@
 import json
 import boto3
 import os
-import time
-from boto3.dynamodb.conditions import Key, Attr
 
 dynamodb = boto3.resource('dynamodb')
 ENVIRONMENT = os.environ['ENVIRONMENT']
 
 
-def postTransactions(event, context):
+def postEvents(event, context):
     global dynamodb
     data = json.loads(event['body'])
     response_value = {
@@ -22,12 +20,15 @@ def postTransactions(event, context):
     try:
         print(event["queryStringParameters"])
         print(data)
-        table = dynamodb.Table('User_Transactions_' + ENVIRONMENT)
+        table = dynamodb.Table('Events_' + ENVIRONMENT)
 
         itemToPut = {
-            'TransactionID': data['TransactionID'],
-            'TotalPrice': data['TotalPrice'],
-            'CreatedOn': str(time.time())
+            'EventID': data['EventID'],
+            'EventLocation': data['EventLocation'],
+            'EventPrice': data['EventPrice'],
+            'EventTitle': data['EventTitle'],
+            'EventType': data['EventType'],
+            'EventImg': data['EventImg']
         }
 
         table.put_item(Item=itemToPut)
