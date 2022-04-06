@@ -9,7 +9,7 @@ import Services from '../../Pages/Services/services';
 import configureStore from '../../Services/Store/configureStore';
 import { Provider } from 'react-redux';
 import Footer from "../../Components/Footer/Footer";
-import Navbar from '../../Components/Navbar/Navbar';
+import Navbar from "../../Components/Navbar/Navbar";
 
 function App() {
     const store = configureStore();

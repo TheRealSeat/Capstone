@@ -33,7 +33,7 @@ const HomePage = () => {
                     <div className="white-large">Where your seat is placed</div>
                   </Grid.Column>
                   <Grid.Column textAlign="left">
-                    <div className="orange-large">TheRealSeat</div>
+                    <div className="orange-large">TheRealCapstone</div>
                   </Grid.Column>
                 </Grid.Row>
               </Grid>
@@ -102,7 +102,7 @@ const HomePage = () => {
           </Grid.Column>
           <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
             <Header as='h3' style={{ fontSize: '2em', color: '#fe9200' }}>
-              TheRealSeat
+              TheRealCapstone
             </Header>
             <p style={{ fontSize: '1.33em', color: 'white' }}>
               <Image avatar src={logo} />
@@ -124,7 +124,7 @@ const HomePage = () => {
           Fan Servicing
         </Header>
         <p style={{ fontSize: '1.33em', color: '#b3b3b3'}}>
-          At TheRealSeat, we provide fans with the upmost quality of serivce.
+          At TheRealCapstone, we provide fans with the upmost quality of serivce.
           The process of purchasing your next event is simplified to a few easy steps.
           Our service handles all of the bookings directly with event organizers for reliable transactions.
         </p>
@@ -166,7 +166,7 @@ const HomePage = () => {
                   Join{" "}
                 </div>
 
-                <div className="orange-large"> TheRealSeat </div>
+                <div className="orange-large"> TheRealCapstone </div>
 
                 <div className="dark-large" style={{ marginLeft: "20px" }}>
                   Today{" "}
