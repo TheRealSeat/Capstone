@@ -38,9 +38,17 @@ const Event = {
   listType: (type) => requests.get(`events?type=${type}`),
 };
 
+const Transaction = {
+    list: () => requests.get("transactions"),
+    details: (id) => requests.get(`transactions/${id}`),
+    create: (values) => requests.post("create_transaction", values),
+    listType: (type) => requests.get(`transactions?type=${type}`),
+};
+
 //Add new endpoints to this object
 const agent = {
-    Event
+    Event,
+    Transaction
 };
 
 export default agent;
