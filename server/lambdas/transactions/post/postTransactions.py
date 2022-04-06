@@ -13,7 +13,8 @@ stripe.api_key = "sk_test_51KiQWrG3YVsmrIIr47VAdHjPbfAg2mrCOzKwr1c7hnIWHgso878OY
 
 def postTransactions(event, context):
     global dynamodb
-    data = json.loads(stripe.issuing.Transaction.retrieve("TransactionID"))
+    eventBody = json.loads(event['body'])
+    data = json.loads(stripe.issuing.Transaction.retrieve( eventBody['TransactionID'] ))
     response_value = {
         'statusCode': 500,
         'body': json.dumps({"error": "Internal Error"}),
