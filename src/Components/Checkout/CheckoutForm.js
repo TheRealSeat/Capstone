@@ -53,15 +53,15 @@ const CheckoutForm = ({show,handleClose}) => {
     if(!error){
       try {
         const {id} = paymentMethod
-        const response = await axios.post("",{
-          amount:cart.cartTotalAmount,
-          id,
-          firstName:value.FirstName,
-          lastName:value.LastName,
-          email:value.Email
+        const response = await axios.post("https://j3usd0c4uh.execute-api.us-east-1.amazonaws.com/Prod/api/PaymentIntent",{
+          amount:cart.cartTotalAmount * 100,
+          currency: "usd",
+          description: "example",
+          payment_method: id,
         })
+        
         //id containers payment method 
-
+        console.log(response)
         if(response.data.success){
           console.log("Successful payment")
           // setSuccess(true);
