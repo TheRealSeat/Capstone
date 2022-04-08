@@ -83,6 +83,16 @@ Resources:
         AllowHeaders: "'*'"
         AllowOrigin: "'*'"
 
+  PaymentIntentAPI:
+    Type: AWS::Serverless::Api
+    Properties:
+      Name: !Sub "PaymentIntentAPI_${ENVIRONMENT}"
+      StageName: Prod
+      Cors:
+        AllowMethods: "'*'"
+        AllowHeaders: "'*'"
+        AllowOrigin: "'*'"
+
   EventsGet:
     Type: AWS::Serverless::Function
     Properties:
@@ -123,7 +133,7 @@ Resources:
         Variables:
           ENVIRONMENT: !Sub "${ENVIRONMENT}"
       Events:
-        GetEvents:
+        PostEvents:
           Type: Api
           Properties:
             RestApiId: !Ref EventAPI
@@ -151,6 +161,25 @@ Resources:
             RestApiId: !Ref UserTransactionAPI
             Path: /api/UserTransactions
             Method: POST
+
+  PaymentIntentPost:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "PaymentIntentPost_${ENVIRONMENT}"
+      CodeUri: lambdas/stripe/paymentIntent/post
+      Handler: postPaymentIntent.postPaymentIntent
+      Runtime: python3.8
+      Environment:
+        Variables:
+          ENVIRONMENT: !Sub "${ENVIRONMENT}"
+      Events:
+        PostPaymentIntent:
+          Type: Api
+          Properties:
+            RestApiId: !Ref PaymentIntentAPI
+            Path: /api/PaymentIntent
+            Method: POST
+  
 
   EventsDynamoDB:
     Type: AWS::DynamoDB::Table
