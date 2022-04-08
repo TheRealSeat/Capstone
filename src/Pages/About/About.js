@@ -15,9 +15,9 @@ const About = () => (
             Vision
         </Header>
         <p style={{ fontSize: '1.33em', color: 'white'}}>
-        Revolutionoizing the approach of ticketing systems through modern algorithmic tools for both customers and organizers alike.
-        The path taken is optimizing efficiently while maintining quality, no shortcuts or deceptions.
-        TheRealSeat is here to become the top ticketing system in the world.
+        Revolutionizing the approach of ticketing systems through modern algorithmic tools for both customers and organizers alike.
+        The path taken is optimizing efficiently while maintaining quality, no shortcuts or deceptions.
+        TheRealCapstone is here to become the top ticketing system in the world.
         </p>
         <Grid.Column floated='right' width={10}>
             <Image size='large' src={Vision} />
@@ -28,7 +28,7 @@ const About = () => (
         </Header>
         <p style={{ fontSize: '1.33em', color: 'white'}}>
           <ul>
-            Send the following to contact@therealseat.com
+            Send the following to contact@therealcapstone.com
             <li>Name</li>
             <li>Company Name</li>
             <li>Reason of Contact</li>
@@ -40,7 +40,7 @@ const About = () => (
             Careers
         </Header>
         <p style={{ fontSize: '1.33em', color: 'white'}}>
-        There are many opportunities to expand upon your professional career here @ TheRealSeat.
+        There are many opportunities to expand upon your professional career here @ TheRealCaptsone.
           <ul>
               Tech Roles - We are a tech focused organization
               <li>ML Engineer - Develop production-ready machine learning models and deploy them into production. Understand cloud deployment and CI/CD.</li>
