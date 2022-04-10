@@ -1,7 +1,9 @@
 import {combineReducers} from 'redux'
 import cart from './cart'
+import events from './event';
 const rootReducer=combineReducers({
-   cart
+   cart,
+   events
 })
 
 export default rootReducer;

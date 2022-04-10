@@ -41,7 +41,7 @@ function Footer() {
                                 <Grid.Column width={7}>
                                     <Header as='h2' inverted style={{ color: '#fe9200' }}>
                                         <Image avatar src={logo} />
-                                        TheRealSeat
+                                        TheRealCapstone
                                     </Header>
                                     <p>
                                         Sell Your Seats, Know Your Fans

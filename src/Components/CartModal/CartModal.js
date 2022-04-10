@@ -5,7 +5,7 @@ import { Typography } from "@mui/material";
 import { removeFromCart } from "../../Services/Slices/cart";
 import { Button, Divider, Icon } from "semantic-ui-react";
 import { Table } from "react-bootstrap";
-const CartModal = ({ show, handleClose }) => {
+const CartModal = ({ show, handleClose,setCheckout }) => {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   return (
@@ -35,7 +35,7 @@ const CartModal = ({ show, handleClose }) => {
                 </thead>
                 <tbody>
                   {cart.cartEvents?.map((product, index) => (
-                    <tr>
+                    <tr key={index}>
                       <td>{product.catalog}</td>
                       <td>{product.event_title}</td>
                       <td>{product.event_location}</td>
@@ -59,7 +59,7 @@ const CartModal = ({ show, handleClose }) => {
 
               <Typography
                 variant="h4"
-                sx={{ textAlign: "right", marginRight: "10%" }}
+                sx={{ textalign: "right", marginRight: "10%" }}
               >
                 <li>Total: ${cart.cartTotalAmount}</li>
               </Typography>
@@ -72,7 +72,10 @@ const CartModal = ({ show, handleClose }) => {
           <Button onClick={() => handleClose(false)} color="red">
             Close
           </Button>
-          <Button onClick={() => handleClose(true)} color="green">
+          <Button onClick={() => {
+            setCheckout(true)
+            handleClose(true)
+            }} color="green" disabled={cart.cartEvents.length === 0}>
             Checkout
           </Button>
         </Modal.Footer>

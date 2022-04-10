@@ -1,20 +1,14 @@
 import json
 import boto3
 import os
-import time
-import stripe
-from boto3.dynamodb.conditions import Key, Attr
 
 dynamodb = boto3.resource('dynamodb')
 ENVIRONMENT = os.environ['ENVIRONMENT']
-stripe.api_key = "sk_test_51KiQWrG3YVsmrIIr47VAdHjPbfAg2mrCOzKwr1c7hnIWHgso878OYMpnU50ffyOY976uduuPdgECR6DgR62OP2q500ybLiTRyU"
 
 
-
-def postTransactions(event, context):
+def postEvents(event, context):
     global dynamodb
-    eventBody = json.loads(event['body'])
-    data = json.loads(str(stripe.PaymentIntent.retrieve( eventBody['TransactionID'] )))
+    data = json.loads(event['body'])
     response_value = {
         'statusCode': 500,
         'body': json.dumps({"error": "Internal Error"}),
@@ -26,12 +20,15 @@ def postTransactions(event, context):
     try:
         print(event["queryStringParameters"])
         print(data)
-        table = dynamodb.Table('User_Transactions_' + ENVIRONMENT)
+        table = dynamodb.Table('Events_' + ENVIRONMENT)
 
         itemToPut = {
-            'TransactionID': data['id'],
-            'TotalPrice': data['amount'],
-            'CreatedOn': str(time.time())
+            'EventID': data['EventID'],
+            'EventLocation': data['EventLocation'],
+            'EventPrice': data['EventPrice'],
+            'EventTitle': data['EventTitle'],
+            'EventType': data['EventType'],
+            'EventImg': data['EventImg']
         }
 
         table.put_item(Item=itemToPut)
