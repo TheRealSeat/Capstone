@@ -24,14 +24,14 @@ const Navbar = () => {
           />
         </NavLink>
 
-        <NavLink to="/Events">
+        <NavLink to="/events">
           <Menu.Item
             name="Events"
             active={activeItem === "Events"}
             onClick={() => setActiveItem("Events")}
           />
         </NavLink>
-        <NavLink to="/Services">
+        <NavLink to="/services">
           <Menu.Item
             name="Fans"
             active={activeItem === "Fans"}
