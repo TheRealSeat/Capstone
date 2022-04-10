@@ -23,20 +23,20 @@ function Footer() {
                                 <Grid.Column width={3}>
                                     <Header inverted as='h4' content='About' />
                                     <List link inverted>
-                                        <List.Item as={Link} to='/About#Vision'>Vision</List.Item>
-                                        <List.Item as={Link} to='/About#Contact'>Contact</List.Item>
-                                        <List.Item as={Link} to='/About#Careers'>Careers</List.Item>
-                                        <List.Item as={Link} to='/About#FAQ'>FAQ</List.Item>
+                                        <List.Item as={Link} to='/about#Vision'>Vision</List.Item>
+                                        <List.Item as={Link} to='/about#Contact'>Contact</List.Item>
+                                        <List.Item as={Link} to='/about#Careers'>Careers</List.Item>
+                                        <List.Item as={Link} to='/about#FAQ'>FAQ</List.Item>
 
                                     </List>
                                 </Grid.Column>
                                 <Grid.Column width={3}>
                                     <Header inverted as='h4' content='Services' />
                                     <List link inverted>
-                                        <List.Item as={Link} to='/Services#Organizer'>Organizer</List.Item>
-                                        <List.Item as={Link} to='/Services#Fan'>Fan</List.Item>
-                                        <List.Item as={Link} to='/Services#Plans'>Plans</List.Item>
-                                        <List.Item as={Link} to='/Services#Pricing'>Pricing</List.Item>
+                                        <List.Item as={Link} to='/services#Organizer'>Organizer</List.Item>
+                                        <List.Item as={Link} to='/services#Fan'>Fan</List.Item>
+                                        <List.Item as={Link} to='/services#Plans'>Plans</List.Item>
+                                        <List.Item as={Link} to='/services#Pricing'>Pricing</List.Item>
                                     </List>
                                 </Grid.Column>
                                 <Grid.Column width={7}>
