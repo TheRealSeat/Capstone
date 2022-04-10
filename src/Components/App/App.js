@@ -12,8 +12,8 @@ import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/Navbar/Navbar";
 
 function App() {
-    const store = configureStore();
-    return (
+   const store = configureStore();
+   return (
         <Provider store={store}>
             <BrowserRouter>
                 <Navbar />
