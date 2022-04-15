@@ -24,6 +24,7 @@ function Events() {
     agent.Event.list()
         .then(values => {
           console.log(values)
+          console.log(process.env.REACT_APP_BASE_URL)
             dispatch(AddEvents(values));
         })
         .catch(error=>console.log(error))
