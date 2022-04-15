@@ -54,7 +54,11 @@ jobs:
       run: |
         yarn install
     - name: Production Build
-      run: yarn build
+      run: |
+        yarn build
+      env:
+        REACT_APP_API_SITE: /api/site
+        REACT_APP_BASE_URL: ${{ env.DOMAIN }}
 
     - name: Deploy to s3
       run: |
