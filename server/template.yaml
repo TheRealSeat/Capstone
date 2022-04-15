@@ -24,15 +24,41 @@ Resources:
     DeletionPolicy: Retain
     Properties:
       DistributionConfig:
-        # Making the origin of this distribution to the S3 bucket of the person pushing
         Origins:
         - Id: S3Origin
-          DomainName: !Sub "${DOMAINNAME}.therealcapstone.com.s3.amazonaws.com"
+          DomainName: !Sub "${DOMAINNAME}.s3.amazonaws.com"
           CustomOriginConfig:
             OriginProtocolPolicy: http-only
+        - Id: EventAPI
+          DomainName: !Sub "${EventAPI}.execute-api.us-east-1.amazonaws.com"
+          OriginPath: /Prod
+          CustomOriginConfig:
+            HTTPPort: '80'
+            HTTPSPort: '443'
+            OriginProtocolPolicy: https-only
+            OriginSSLProtocols: 
+            - 'TLSv1.2'
+        - Id: UserTransactionAPI
+          DomainName: !Sub "${UserTransactionAPI}.execute-api.us-east-1.amazonaws.com"
+          OriginPath: /Prod
+          CustomOriginConfig:
+            HTTPPort: '80'
+            HTTPSPort: '443'
+            OriginProtocolPolicy: https-only
+            OriginSSLProtocols: 
+            - 'TLSv1.2'
+        - Id: PaymentIntentAPI
+          DomainName: !Sub "${PaymentIntentAPI}.execute-api.us-east-1.amazonaws.com"
+          OriginPath: /Prod
+          CustomOriginConfig:
+            HTTPPort: '80'
+            HTTPSPort: '443'
+            OriginProtocolPolicy: https-only
+            OriginSSLProtocols: 
+            - 'TLSv1.2'
         Enabled: 'true'
         Aliases:
-        - !Sub "${DOMAINNAME}.therealcapstone.com"
+        - !Sub "${DOMAINNAME}"
         HttpVersion: http2
         DefaultRootObject: index.html
         PriceClass: PriceClass_100
@@ -45,9 +71,9 @@ Resources:
           - ErrorCachingMinTTL: 86400
             ErrorCode: 404
             ResponseCode: 200
-            ResponsePagePath: '/index.html'
+            ResponsePagePath: '/index.html'    
         DefaultCacheBehavior:
-          Compress: 'true'
+          Compress: 'false'
           AllowedMethods:
           - HEAD
           - DELETE
@@ -62,6 +88,65 @@ Resources:
             Cookies:
               Forward: none
           ViewerProtocolPolicy: redirect-to-https
+        CacheBehaviors:
+        - PathPattern: '/api/events'
+          TargetOriginId: EventAPI
+          ViewerProtocolPolicy: redirect-to-https
+          AllowedMethods: 
+          - DELETE
+          - GET
+          - HEAD
+          - OPTIONS
+          - PATCH
+          - POST
+          - PUT
+          Compress: 'false'
+          ForwardedValues:
+            QueryString: 'true'
+        - PathPattern: '/api/UserTransactions'
+          TargetOriginId: UserTransactionAPI
+          ViewerProtocolPolicy: redirect-to-https
+          AllowedMethods: 
+          - DELETE
+          - GET
+          - HEAD
+          - OPTIONS
+          - PATCH
+          - POST
+          - PUT
+          Compress: 'false'
+          ForwardedValues:
+            QueryString: 'true'
+        - PathPattern: '/api/PaymentIntent'
+          TargetOriginId: PaymentIntentAPI
+          ViewerProtocolPolicy: redirect-to-https
+          AllowedMethods: 
+          - DELETE
+          - GET
+          - HEAD
+          - OPTIONS
+          - PATCH
+          - POST
+          - PUT
+          Compress: 'false'
+          ForwardedValues:
+            QueryString: 'false'
+        - PathPattern: '*'
+          TargetOriginId: S3Origin
+          ViewerProtocolPolicy: redirect-to-https
+          AllowedMethods: 
+          - DELETE
+          - GET
+          - HEAD
+          - OPTIONS
+          - PATCH
+          - POST
+          - PUT
+          Compress: 'false'
+          ForwardedValues:
+            QueryString: 'false'
+          
+
 
   EventAPI:
     Type: AWS::Serverless::Api
