@@ -16,10 +16,10 @@ import
 import Crowd_1 from './Crowd_1.jpg';
 import logo from './logo.svg';
 import Crowd_3 from './Crowd_3.jpg';
+import { HashLink as Link } from "react-router-hash-link";
 
 
 import "./HomePage.scss";
-import { Link } from "react-router-dom";
 const HomePage = () => {
   return (
     <Segment inverted textAlign="center" vertical className="masthead">
@@ -75,7 +75,7 @@ const HomePage = () => {
         </Grid.Row>
         <Grid.Row>
           <Grid.Column textAlign='center'>
-            <Button size='huge'>Check Out Events</Button>
+            <Button size='huge' as={Link} to='/Events'>Check Out Events</Button>
           </Grid.Column>
         </Grid.Row>
       </Grid>
@@ -92,10 +92,10 @@ const HomePage = () => {
             <Menu vertical>
               <Dropdown item textAlign='center' text='Categories'>
                 <Dropdown.Menu>
-                  <Dropdown.Item>Concerts</Dropdown.Item>
-                  <Dropdown.Item>Sports</Dropdown.Item>
-                  <Dropdown.Item>Conventions</Dropdown.Item>
-                  <Dropdown.Item>Artistic Venues</Dropdown.Item>
+                  <Dropdown.Item as={Link} to='/Events'>Concerts</Dropdown.Item>
+                  <Dropdown.Item as={Link} to='/Events'>Sports</Dropdown.Item>
+                  <Dropdown.Item as={Link} to='/Events'>Conventions</Dropdown.Item>
+                  <Dropdown.Item as={Link} to='/Events'>Artistic Venues</Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
             </Menu>
@@ -128,7 +128,7 @@ const HomePage = () => {
           The process of purchasing your next event is simplified to a few easy steps.
           Our service handles all of the bookings directly with event organizers for reliable transactions.
         </p>
-        <Button as='a' size='large'>
+        <Button as={Link} to='/Services#Fan' size='large'>
           Read More
         </Button>
 
@@ -149,7 +149,7 @@ const HomePage = () => {
           Through our provided tools and methods of production, organizers can directly offer fans an unparalleled experience.
           Organizers can depend on us to deliver exceptional products fast and efficiently.
         </p>
-        <Button as='a' size='large'>
+        <Button as={Link} to='/Services#Organizer' size='large'>
           Read More
         </Button>
       </Container>
