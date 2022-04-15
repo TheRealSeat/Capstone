@@ -1,7 +1,7 @@
 import axios from "axios";
 
 //change base url here
-axios.defaults.baseURL = "https://pdtwnb8fu5.execute-api.us-east-1.amazonaws.com/Prod/api/";
+axios.defaults.baseURL = "https://" + process.env.REACT_APP_BASE_URL + "/api/";
 //axios.defaults.withCredentials = true;
 // axios.defaults.headers={
 //   'Access-Control-Allow-Origin': '*',
@@ -33,22 +33,26 @@ const requests = {
 //We can use this as central data fetching
 const Event = {
   list: () => requests.get("events"),
-  details: (id) => requests.get(`event/${id}`),
-  create:(values) =>requests.post("create_event",values),
-  listType: (type) => requests.get(`events?type=${type}`),
+  details: (id) => requests.get(`events/${id}`),
+  create:(values) =>requests.post("events",values),
+  listType: (type) => requests.get(`events?EventType=${type}`),
 };
 
 const Transaction = {
-    list: () => requests.get("transactions"),
-    details: (id) => requests.get(`transactions/${id}`),
-    create: (values) => requests.post("create_transaction", values),
-    listType: (type) => requests.get(`transactions?type=${type}`),
+    list: () => requests.get("UserTransactions"),
+    details: (id) => requests.get(`UserTransactions/${id}`),
+    create: (values) => requests.post("UserTransactions", values),
+};
+
+const PaymentIntent = {
+  create: (values) => requests.post("PaymentIntent", values),
 };
 
 //Add new endpoints to this object
 const agent = {
     Event,
-    Transaction
+    Transaction,
+    PaymentIntent
 };
 
 export default agent;
