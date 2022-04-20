@@ -20,14 +20,14 @@ function EventForm() {
     EventPrice: 0,
     EventLocation:"",
     EventType: "",
-    img: "",
+    EventImg: "",
   };
   const [isSubmitting,setIsSubmitting]= useState(false);
   const validationSchema = Yup.object({
     EventTitle: Yup.string().required("You must provide a title"),
     EventLocation: Yup.string().required("You must provide a Location"),
     EventType: Yup.string().required("You must provide a EventType"),
-    img: Yup.string().required("You must provide a image URL"),
+    EventImg: Yup.string().required("You must provide a image URL"),
   });
 
   async function handleSubmit(values)
@@ -62,7 +62,7 @@ function EventForm() {
             <MyTextInput name="EventTitle" placeholder="Event Title" />
             <MyTextInput name="EventLocation" placeholder="Event Location" />
             <MyTextInput name="EventType" placeholder="Event Type" />
-            <MyTextInput name="img" placeholder="Event Image URL" />
+            <MyTextInput name="EventImg" placeholder="Event Image URL" />
             <MyTextInput name="EventPrice" type="number" placeholder="Event Price" min="0" />
            
           

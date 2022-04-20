@@ -15,6 +15,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.26.1",
     "bootstrap": "^5.1.3",
+    "env-cmd": "^10.1.0",
     "formik": "^2.2.9",
     "react": "^17.0.2",
     "react-bootstrap": "^2.1.2",
@@ -35,7 +36,9 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start:dev": "env-cmd -f .env.development.local react-scripts start",
     "build": "react-scripts build",
+    "build:dev": "env-cmd -f .env.development.local react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
